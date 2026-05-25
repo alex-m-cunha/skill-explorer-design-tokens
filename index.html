@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;family=Playfair+Display:wght@600&amp;display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================
@@ -49,7 +49,7 @@
       --color-placeholder-background: #EAEAEA;
       --color-placeholder-icon: #6F6F6F;
 
-      /* Theme customization layer */
+      /* Client customization layer */
       --theme-color-primary: var(--color-brand-nova-executive);
       --theme-color-primary-accessible: var(--color-brand-nova-executive-accessible);
       --theme-color-primary-hover: var(--color-brand-nova-executive-hover);
@@ -265,6 +265,12 @@
       gap: var(--space-5);
     }
 
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
     .card {
       border: 1px solid var(--color-border-subtle);
       border-radius: var(--radius-default);
@@ -357,6 +363,23 @@
       font-size: var(--font-size-small);
     }
 
+    .objectives-box {
+      margin: var(--space-5) 0;
+      padding: var(--space-5);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-default);
+      background: var(--color-background-soft);
+    }
+
+    .objectives-box .heading-functional {
+      margin-bottom: var(--space-3);
+    }
+
+    .objectives-box ul {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
     .token-table {
       width: 100%;
       border-collapse: collapse;
@@ -431,8 +454,8 @@
     }
 
     .mock-banner .placeholder {
-      min-height: 180px;
-      aspect-ratio: 5 / 2;
+      min-height: 0;
+      aspect-ratio: 1056 / 250;
     }
 
     .mock-lms-cover .placeholder {
@@ -467,7 +490,33 @@
       font-weight: var(--font-weight-semibold);
       font-family: var(--font-functional);
       color: var(--color-text-primary);
-      list-style-position: outside;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion summary::after {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+      transition: transform 160ms ease;
+      flex: 0 0 auto;
+      position: relative;
+      top: -2px;
+      right: var(--space-1);
+    }
+
+    .accordion[open] summary::after {
+      transform: rotate(225deg);
     }
 
     .accordion-content {
@@ -475,8 +524,35 @@
       color: var(--color-text-primary);
     }
 
+    .bibliography-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+    }
+
+    .bibliography-card .accordion {
+      width: 100%;
+      max-width: 720px;
+      margin-top: 0;
+    }
+
+    .bibliography-card ul {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .bibliography-card li + li {
+      margin-top: var(--space-2);
+    }
+
     .reading-layout {
-      max-width: 760px;
+      width: 100%;
+      max-width: none;
+    }
+
+    .reading-section-heading {
+      font-size: 28px;
     }
 
     .badge {
@@ -546,10 +622,9 @@
 
     <nav class="nav" aria-label="Navegação interna">
       <a href="#principios">Princípios</a>
-      <a href="#brand">Brand</a>
       <a href="#cores">Cores</a>
       <a href="#tipografia">Tipografia</a>
-      <a href="#theme">Theme customization</a>
+      <a href="#theme">Client customization</a>
       <a href="#assets">Assets</a>
       <a href="#componentes">Elementos base</a>
       <a href="#templates">Exemplos</a>
@@ -578,39 +653,6 @@
           <p class="muted">Branding customizado por cliente/cohort muda apenas uma cor primária, um logo e uma imagem de capa. O sistema estrutural mantém-se igual.</p>
         </article>
       </div>
-    </section>
-
-    <section id="brand" class="section">
-      <div class="section-header">
-        <h2 class="section-title">Alinhamento com marca Nova SBE ExEd</h2>
-        <p class="section-description">Executive Education segue o Look & Feel Talent. O brandbook identifica NOVA EXECUTIVE como #009BD0. Neste sistema, #009BD0 é tratado como cor de marca, não como cor universal de texto.</p>
-      </div>
-
-      <div class="do-dont">
-        <article class="card do">
-          <h3 class="card-title">Usar #009BD0 para</h3>
-          <ul class="muted">
-            <li>accent visual</li>
-            <li>detalhes gráficos</li>
-            <li>ícones grandes</li>
-            <li>estados selecionados com contraste controlado</li>
-            <li>elementos de marca não textuais</li>
-          </ul>
-        </article>
-
-        <article class="card dont">
-          <h3 class="card-title">Evitar #009BD0 para</h3>
-          <ul class="muted">
-            <li>links em texto corrido</li>
-            <li>texto pequeno sobre fundo branco</li>
-            <li>micro-copy</li>
-            <li>labels críticos</li>
-            <li>informação instrucional</li>
-          </ul>
-        </article>
-      </div>
-
-      <p class="note" style="margin-top:24px;">Regra: brand color ≠ accessible interaction color. Para links e texto interativo, usar a variante escurecida #0077A3.</p>
     </section>
 
     <section id="cores" class="section">
@@ -672,7 +714,7 @@
 
     <section id="tipografia" class="section">
       <div class="section-header">
-        <h2 class="section-title">Direção tipográfica</h2>
+        <h2 class="section-title">Tipografia</h2>
         <p class="section-description">Escolher a fonte pelo papel do texto no fluxo, não apenas por ser H1, H2 ou H3.</p>
       </div>
 
@@ -744,7 +786,7 @@
 
     <section id="theme" class="section">
       <div class="section-header">
-        <h2 class="section-title">Theme customization layer</h2>
+        <h2 class="section-title">Client customization layer</h2>
         <p class="section-description">Camada simples para branding por cliente/cohort. Não criar um sistema novo por cliente.</p>
       </div>
 
@@ -755,7 +797,6 @@
             <li>1 cor primária</li>
             <li>1 logo</li>
             <li>1 imagem de capa LMS</li>
-            <li>1 imagem de banner por UA</li>
           </ul>
         </article>
 
@@ -785,64 +826,36 @@
     <section id="assets" class="section">
       <div class="section-header">
         <h2 class="section-title">Asset requirements</h2>
-        <p class="section-description">Requisitos mínimos para imagens e logos usados no Brightspace.</p>
+        <p class="section-description">Requisitos mínimos para imagens usadas no Brightspace.</p>
       </div>
 
       <div class="grid">
         <article class="card">
           <h3 class="card-title">LMS Cover Image</h3>
           <p class="muted">Imagem de capa por cohort / themed participant.</p>
-          <ul class="muted" style="margin-top:12px;">
-            <li>usar imagem horizontal</li>
-            <li>manter elementos importantes no centro</li>
-            <li>evitar texto embutido</li>
-            <li>evitar logos nas extremidades</li>
-            <li>JPG recomendado</li>
-            <li>PNG aceitável, evitando transparências problemáticas</li>
-          </ul>
         </article>
 
         <article class="card">
           <h3 class="card-title">UA Banner Image</h3>
           <p class="muted">Imagem de banner por Unidade de Aprendizagem.</p>
-          <ul class="muted" style="margin-top:12px;">
-            <li>optimal upload size: 2400 × 960 px</li>
-            <li>minimum / standard size: 1200 × 200 px</li>
-            <li>actual display area: aprox. 1170 × 200 px</li>
-            <li>aspect ratio recomendado: 5:2 ou 3:1</li>
-            <li>safe zone central</li>
-            <li>sem texto embutido</li>
-          </ul>
         </article>
       </div>
 
-      <div class="grid" style="margin-top:24px;">
-        <div class="mock-lms-cover">
-          <div class="placeholder">
-            <div>
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="3" y="4" width="18" height="16" rx="2"></rect>
-                <circle cx="9" cy="10" r="2"></circle>
-                <path d="M4 18l5-5 4 4 3-3 4 4"></path>
-              </svg>
-              <p class="placeholder-label">LMS Cover Image</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mock-banner">
-          <div class="placeholder">
-            <div>
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="3" y="4" width="18" height="16" rx="2"></rect>
-                <circle cx="9" cy="10" r="2"></circle>
-                <path d="M4 18l5-5 4 4 3-3 4 4"></path>
-              </svg>
-              <p class="placeholder-label">UA Banner Image</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <article class="card" style="margin-top:24px;">
+        <h3 class="card-title">Especificações comuns</h3>
+        <ul class="muted" style="margin-top:12px;">
+          <li>usar imagem horizontal</li>
+          <li>optimal upload size: 2400 × 960 px</li>
+          <li>minimum / standard size: 1200 × 200 px</li>
+          <li>actual desktop display area: aprox. 1170 × 200 px</li>
+          <li>manter elementos importantes na safe zone central</li>
+          <li>evitar texto embutido</li>
+          <li>evitar logos nas extremidades</li>
+          <li>evitar imagens quadradas ou verticais para banners</li>
+          <li>JPG recomendado por compatibilidade</li>
+          <li>PNG aceitável quando necessário</li>
+        </ul>
+      </article>
     </section>
 
     <section id="componentes" class="section">
@@ -851,7 +864,7 @@
         <p class="section-description">Exemplos de elementos recorrentes na documentação e nos templates.</p>
       </div>
 
-      <div class="grid">
+      <div class="stack">
         <div class="card">
           <p class="eyebrow">Leitura</p>
           <h3 class="heading-editorial" style="font-size:28px;">Heading editorial</h3>
@@ -861,27 +874,28 @@
         <div class="card">
           <h3 class="heading-functional" style="font-size:28px;">Heading funcional</h3>
           <p class="body-copy">Usado para Objetivos de aprendizagem, Bibliografia, instruções e secções operacionais.</p>
-          <span class="badge">Estado / label</span>
         </div>
 
         <div class="card">
-          <div class="placeholder">
-            <div>
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                <path d="M10 9l5 3-5 3V9z"></path>
-              </svg>
-              <p class="placeholder-label">Placeholder de vídeo</p>
-            </div>
+          <div class="objectives-box" style="margin:0;">
+            <h3 class="heading-functional" style="font-size:28px;">Objetivos de aprendizagem</h3>
+            <ul>
+              <li>Identificar os conceitos essenciais da unidade.</li>
+              <li>Relacionar os conteúdos com situações de decisão em contexto executivo.</li>
+              <li>Preparar a aplicação prática dos materiais seguintes.</li>
+            </ul>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card bibliography-card">
           <details class="accordion" open>
             <summary>Bibliografia</summary>
             <div class="accordion-content">
-              <p class="body-copy">Referência bibliográfica 1</p>
-              <p class="body-copy">Referência bibliográfica 2</p>
+              <ul>
+                <li>Porter, M. E. (1996). What is strategy? <em>Harvard Business Review, 74</em>(6), 61-78.</li>
+                <li>Ghemawat, P. (2007). <em>Redefining Global Strategy</em>. Harvard Business School Press.</li>
+                <li>Rodrik, D. (2011). <em>The Globalization Paradox</em>. W. W. Norton & Company.</li>
+              </ul>
             </div>
           </details>
         </div>
@@ -902,7 +916,7 @@
               <circle cx="9" cy="10" r="2"></circle>
               <path d="M4 18l5-5 4 4 3-3 4 4"></path>
             </svg>
-            <p class="placeholder-label">Banner da UA</p>
+            <p class="placeholder-label">Banner de página da UA · 1056 × 250 px</p>
           </div>
         </div>
       </div>
@@ -929,15 +943,15 @@
         </div>
       </div>
 
-      <hr>
+      <div class="objectives-box">
+        <h2 class="heading-functional">Objetivos de aprendizagem</h2>
 
-      <h2 class="heading-functional">Objetivos de aprendizagem</h2>
-
-      <ul>
-        <li>Compreender o enquadramento geral da unidade curricular.</li>
-        <li>Identificar os principais temas abordados ao longo da unidade.</li>
-        <li>Preparar-se para explorar os materiais e atividades seguintes.</li>
-      </ul>
+        <ul>
+          <li>Compreender o enquadramento geral da unidade curricular.</li>
+          <li>Identificar os principais temas abordados ao longo da unidade.</li>
+          <li>Preparar-se para explorar os materiais e atividades seguintes.</li>
+        </ul>
+      </div>
 
       <details class="accordion">
         <summary>Bibliografia</summary>
@@ -963,7 +977,7 @@
                 <circle cx="9" cy="10" r="2"></circle>
                 <path d="M4 18l5-5 4 4 3-3 4 4"></path>
               </svg>
-              <p class="placeholder-label">Banner da UA</p>
+              <p class="placeholder-label">Banner de página da UA · 1056 × 250 px</p>
             </div>
           </div>
         </div>
@@ -973,16 +987,16 @@
         <p class="eyebrow">Leitura</p>
         <h1 class="heading-editorial">Crescimento, Globalização e Populismo</h1>
 
-        <hr>
+        <div class="objectives-box">
+          <h2 class="heading-functional">Objetivos de aprendizagem</h2>
+          <ul>
+            <li>Relacionar crescimento económico e globalização.</li>
+            <li>Interpretar indicadores económicos no contexto da unidade.</li>
+            <li>Compreender tensões sociais associadas ao populismo.</li>
+          </ul>
+        </div>
 
-        <h2 class="heading-functional">Objetivos de aprendizagem</h2>
-        <ul>
-          <li>Relacionar crescimento económico e globalização.</li>
-          <li>Interpretar indicadores económicos no contexto da unidade.</li>
-          <li>Compreender tensões sociais associadas ao populismo.</li>
-        </ul>
-
-        <h2 class="heading-editorial">Crescimento, globalização e desigualdade</h2>
+        <h2 class="heading-editorial reading-section-heading">Crescimento, globalização e desigualdade</h2>
 
         <p class="body-copy">
           Durante várias décadas, a integração económica global contribuiu para mudanças profundas na distribuição da riqueza, na organização produtiva e na forma como diferentes sociedades interpretam crescimento e prosperidade.
@@ -1053,7 +1067,7 @@
   --color-text-link-hover: var(--color-brand-nova-executive-hover);
   --color-success: #16A34A;
 
-  /* Theme customization layer */
+  /* Client customization layer */
   --theme-color-primary: var(--color-brand-nova-executive);
   --theme-color-primary-accessible: var(--color-brand-nova-executive-accessible);
   --theme-color-primary-hover: var(--color-brand-nova-executive-hover);

@@ -19,11 +19,14 @@
     :root {
       /* Core colors */
       --color-black: #2C2C2C;
+      --color-black-hover: #3A3A3A;
+      --color-black-pressed: #1F1F1F;
       --color-white: #FFFFFF;
 
       --color-text-primary: var(--color-black);
       --color-text-inverse: var(--color-white);
       --color-text-muted: #6F6F6F;
+      --color-text-on-brand: var(--color-black-pressed);
 
       --color-background-default: var(--color-white);
       --color-background-page: #F7F7F7;
@@ -37,13 +40,17 @@
       --color-brand-nova-executive: #009BD0;
       --color-brand-nova-executive-accessible: #0077A3;
       --color-brand-nova-executive-hover: #006B8F;
+      --color-brand-nova-executive-hover-light: #20B5E6;
       --color-brand-nova-executive-soft: #E6F6FB;
       --color-brand-nova-executive-border: #B8E5F2;
+      --color-brand-nova-executive-pressed: #005E7D;
 
       /* Functional colors */
       --color-text-link: var(--color-brand-nova-executive-accessible);
       --color-text-link-hover: var(--color-brand-nova-executive-hover);
       --color-success: #16A34A;
+      --color-disabled-background: #EAEAEA;
+      --color-disabled-text: #8A8A8A;
 
       /* Placeholder colors */
       --color-placeholder-background: #EAEAEA;
@@ -53,6 +60,8 @@
       --theme-color-primary: var(--color-brand-nova-executive);
       --theme-color-primary-accessible: var(--color-brand-nova-executive-accessible);
       --theme-color-primary-hover: var(--color-brand-nova-executive-hover);
+      --theme-color-primary-hover-light: var(--color-brand-nova-executive-hover-light);
+      --theme-color-primary-pressed: var(--color-brand-nova-executive-pressed);
       --theme-color-primary-soft: var(--color-brand-nova-executive-soft);
       --theme-color-primary-border: var(--color-brand-nova-executive-border);
 
@@ -64,14 +73,14 @@
       --font-weight-semibold: 600;
 
       /* Type scale */
-      --font-size-eyebrow: 12px;
-      --font-size-caption: 12px;
-      --font-size-small: 14px;
-      --font-size-body: 16px;
-      --font-size-heading-functional: 28px;
-      --font-size-heading-editorial: 32px;
-      --font-size-title: 42px;
-      --font-size-page-title: 56px;
+      --font-size-eyebrow: 0.75rem;
+      --font-size-caption: 0.75rem;
+      --font-size-small: 0.875rem;
+      --font-size-body: 1rem;
+      --font-size-heading-functional: 1.75rem;
+      --font-size-heading-editorial: 2rem;
+      --font-size-title: 2.625rem;
+      --font-size-page-title: 3.5rem;
 
       --line-height-tight: 1.12;
       --line-height-heading: 1.25;
@@ -152,7 +161,7 @@
       background: #202020;
       color: var(--color-white);
       border-radius: var(--radius-default);
-      font-size: 13px;
+      font-size: 0.8125rem;
       line-height: 1.55;
     }
 
@@ -241,7 +250,7 @@
     .section-title {
       margin: 0 0 var(--space-3);
       font-family: var(--font-functional);
-      font-size: 22px;
+      font-size: 1.375rem;
       line-height: var(--line-height-heading);
       font-weight: var(--font-weight-semibold);
       color: var(--color-text-primary);
@@ -374,7 +383,7 @@
 
     .objectives-box .heading-functional {
       margin-bottom: var(--space-3);
-      font-size: 22px;
+      font-size: 1.375rem;
     }
 
     .objectives-box ul {
@@ -554,7 +563,7 @@
     }
 
     .reading-section-heading {
-      font-size: 28px;
+      font-size: 1.75rem;
     }
 
     .badge {
@@ -567,6 +576,140 @@
       border: 1px solid var(--theme-color-primary-border);
       font-size: var(--font-size-caption);
       font-weight: var(--font-weight-semibold);
+    }
+
+    .button-demo-grid {
+      display: grid;
+      grid-template-columns: minmax(7rem, 0.8fr) repeat(4, minmax(8rem, 1fr));
+      gap: var(--space-3);
+      align-items: center;
+      overflow-x: auto;
+      padding-bottom: var(--space-2);
+    }
+
+    .button-demo-heading,
+    .button-demo-label {
+      margin: 0;
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .button-demo-label {
+      color: var(--color-text-primary);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.75rem;
+      padding: 0.625rem 1rem;
+      border: 1px solid transparent;
+      border-radius: var(--radius-default);
+      font-family: var(--font-functional);
+      font-size: var(--font-size-small);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.2;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+    }
+
+    .button:focus-visible {
+      outline: 2px solid var(--theme-color-primary-accessible);
+      outline-offset: 2px;
+    }
+
+    .button-primary.button-solid {
+      background: var(--theme-color-primary);
+      border-color: var(--theme-color-primary);
+      color: var(--color-text-on-brand);
+    }
+
+    .button-primary.button-solid:hover,
+    .button-primary.button-solid.is-hover {
+      background: var(--theme-color-primary-hover-light);
+      border-color: var(--theme-color-primary-hover-light);
+      color: var(--color-text-on-brand);
+    }
+
+    .button-primary.button-solid:active,
+    .button-primary.button-solid.is-pressed {
+      background: var(--theme-color-primary-pressed);
+      border-color: var(--theme-color-primary-pressed);
+      color: var(--color-text-inverse);
+    }
+
+    .button-primary.button-outline {
+      background: var(--color-background-default);
+      border-color: var(--theme-color-primary);
+      color: var(--theme-color-primary-accessible);
+    }
+
+    .button-primary.button-outline:hover,
+    .button-primary.button-outline.is-hover {
+      background: var(--theme-color-primary-soft);
+      border-color: var(--theme-color-primary-accessible);
+      color: var(--theme-color-primary-hover);
+    }
+
+    .button-primary.button-outline:active,
+    .button-primary.button-outline.is-pressed {
+      background: var(--theme-color-primary-border);
+      border-color: var(--theme-color-primary-hover);
+      color: var(--color-text-primary);
+    }
+
+    .button-secondary.button-solid {
+      background: var(--color-black);
+      border-color: var(--color-black);
+      color: var(--color-text-inverse);
+    }
+
+    .button-secondary.button-solid:hover,
+    .button-secondary.button-solid.is-hover {
+      background: var(--color-black-hover);
+      border-color: var(--color-black-hover);
+      color: var(--color-text-inverse);
+    }
+
+    .button-secondary.button-solid:active,
+    .button-secondary.button-solid.is-pressed {
+      background: var(--color-black-pressed);
+      border-color: var(--color-black-pressed);
+      color: var(--color-text-inverse);
+    }
+
+    .button-secondary.button-outline {
+      background: var(--color-background-default);
+      border-color: var(--color-black);
+      color: var(--color-text-primary);
+    }
+
+    .button-secondary.button-outline:hover,
+    .button-secondary.button-outline.is-hover {
+      background: #F1F1F1;
+      border-color: var(--color-black);
+      color: var(--color-text-primary);
+    }
+
+    .button-secondary.button-outline:active,
+    .button-secondary.button-outline.is-pressed {
+      background: var(--color-black);
+      border-color: var(--color-black);
+      color: var(--color-text-inverse);
+    }
+
+    .button:disabled,
+    .button.is-disabled {
+      background: var(--color-disabled-background);
+      border-color: var(--color-border-default);
+      color: var(--color-disabled-text);
+      cursor: not-allowed;
+      pointer-events: none;
     }
 
     .do-dont {
@@ -595,16 +738,16 @@
       }
 
       .hero h1 {
-        font-size: 38px;
+        font-size: 2.375rem;
       }
 
       .heading-editorial-title {
-        font-size: 34px;
+        font-size: 2.125rem;
       }
 
       .heading-editorial,
       .heading-functional {
-        font-size: 26px;
+        font-size: 1.625rem;
       }
 
       .mock-video {
@@ -629,6 +772,7 @@
       <a href="#theme">Client customization</a>
       <a href="#assets">Assets</a>
       <a href="#componentes">Elementos base</a>
+      <a href="#botoes">Botões</a>
       <a href="#templates">Exemplos</a>
       <a href="#css">CSS</a>
     </nav>
@@ -818,6 +962,8 @@
   --theme-color-primary: var(--color-brand-nova-executive);
   --theme-color-primary-accessible: var(--color-brand-nova-executive-accessible);
   --theme-color-primary-hover: var(--color-brand-nova-executive-hover);
+  --theme-color-primary-hover-light: var(--color-brand-nova-executive-hover-light);
+  --theme-color-primary-pressed: var(--color-brand-nova-executive-pressed);
   --theme-color-primary-soft: var(--color-brand-nova-executive-soft);
   --theme-color-primary-border: var(--color-brand-nova-executive-border);
 }</code></pre>
@@ -869,18 +1015,18 @@
       <div class="stack">
         <div class="card">
           <p class="eyebrow">Leitura</p>
-          <h3 class="heading-editorial" style="font-size:28px;">Heading editorial</h3>
+          <h3 class="heading-editorial" style="font-size:1.75rem;">Heading editorial</h3>
           <p class="body-copy">Usado para momentos narrativos e estrutura argumentativa da leitura.</p>
         </div>
 
         <div class="card">
-          <h3 class="heading-functional" style="font-size:28px;">Heading funcional</h3>
+          <h3 class="heading-functional" style="font-size:1.75rem;">Heading funcional</h3>
           <p class="body-copy">Usado para Objetivos de aprendizagem, Bibliografia, instruções e secções operacionais.</p>
         </div>
 
         <div class="card">
           <div class="objectives-box" style="margin:0;">
-            <h3 class="heading-functional" style="font-size:28px;">Objetivos de aprendizagem</h3>
+            <h3 class="heading-functional" style="font-size:1.75rem;">Objetivos de aprendizagem</h3>
             <ul>
               <li>Identificar os conceitos essenciais da unidade.</li>
               <li>Relacionar os conteúdos com situações de decisão em contexto executivo.</li>
@@ -902,6 +1048,85 @@
           </details>
         </div>
       </div>
+    </section>
+
+    <section id="botoes" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Botões</h2>
+        <p class="section-description">Botões primários usam a cor oficial Nova Executive. Botões secundários usam o preto base do sistema.</p>
+      </div>
+
+      <div class="stack">
+        <article class="card">
+          <h3 class="card-title">Primary · solid</h3>
+          <div class="button-demo-grid" aria-label="Estados do botão primary solid">
+            <p class="button-demo-heading">Variante</p>
+            <p class="button-demo-heading">Active</p>
+            <p class="button-demo-heading">Hover</p>
+            <p class="button-demo-heading">Pressed</p>
+            <p class="button-demo-heading">Disabled</p>
+
+            <p class="button-demo-label">Solid</p>
+            <button class="button button-primary button-solid" type="button">Continuar</button>
+            <button class="button button-primary button-solid is-hover" type="button">Continuar</button>
+            <button class="button button-primary button-solid is-pressed" type="button">Continuar</button>
+            <button class="button button-primary button-solid" type="button" disabled>Continuar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Primary · outline</h3>
+          <div class="button-demo-grid" aria-label="Estados do botão primary outline">
+            <p class="button-demo-heading">Variante</p>
+            <p class="button-demo-heading">Active</p>
+            <p class="button-demo-heading">Hover</p>
+            <p class="button-demo-heading">Pressed</p>
+            <p class="button-demo-heading">Disabled</p>
+
+            <p class="button-demo-label">Outline</p>
+            <button class="button button-primary button-outline" type="button">Continuar</button>
+            <button class="button button-primary button-outline is-hover" type="button">Continuar</button>
+            <button class="button button-primary button-outline is-pressed" type="button">Continuar</button>
+            <button class="button button-primary button-outline" type="button" disabled>Continuar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Secondary · solid</h3>
+          <div class="button-demo-grid" aria-label="Estados do botão secondary solid">
+            <p class="button-demo-heading">Variante</p>
+            <p class="button-demo-heading">Active</p>
+            <p class="button-demo-heading">Hover</p>
+            <p class="button-demo-heading">Pressed</p>
+            <p class="button-demo-heading">Disabled</p>
+
+            <p class="button-demo-label">Solid</p>
+            <button class="button button-secondary button-solid" type="button">Cancelar</button>
+            <button class="button button-secondary button-solid is-hover" type="button">Cancelar</button>
+            <button class="button button-secondary button-solid is-pressed" type="button">Cancelar</button>
+            <button class="button button-secondary button-solid" type="button" disabled>Cancelar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Secondary · outline</h3>
+          <div class="button-demo-grid" aria-label="Estados do botão secondary outline">
+            <p class="button-demo-heading">Variante</p>
+            <p class="button-demo-heading">Active</p>
+            <p class="button-demo-heading">Hover</p>
+            <p class="button-demo-heading">Pressed</p>
+            <p class="button-demo-heading">Disabled</p>
+
+            <p class="button-demo-label">Outline</p>
+            <button class="button button-secondary button-outline" type="button">Cancelar</button>
+            <button class="button button-secondary button-outline is-hover" type="button">Cancelar</button>
+            <button class="button button-secondary button-outline is-pressed" type="button">Cancelar</button>
+            <button class="button button-secondary button-outline" type="button" disabled>Cancelar</button>
+          </div>
+        </article>
+      </div>
+
+      <p class="caption">O estado Active representa o estado base/interativo. Disabled deve remover interação e manter contraste visual baixo sem parecer um link ativo.</p>
     </section>
 
     <section id="templates" class="section">
@@ -1053,7 +1278,7 @@
           <figcaption>Figura 1. Exemplo de gráfico integrado no fluxo da leitura.</figcaption>
         </figure>
 
-        <h3 class="heading-editorial" style="font-size:26px">O papel dos indicadores macroeconómicos</h3>
+        <h3 class="heading-editorial" style="font-size:1.625rem">O papel dos indicadores macroeconómicos</h3>
 
         <p class="body-copy">
           A organização hierárquica deve ser semanticamente correta: H2 para secções principais, H3 para subsecções e H4 apenas quando existir um nível adicional real.
@@ -1078,11 +1303,14 @@
       <pre><code>:root {
   /* Core colors */
   --color-black: #2C2C2C;
+  --color-black-hover: #3A3A3A;
+  --color-black-pressed: #1F1F1F;
   --color-white: #FFFFFF;
 
   --color-text-primary: var(--color-black);
   --color-text-inverse: var(--color-white);
   --color-text-muted: #6F6F6F;
+  --color-text-on-brand: var(--color-black-pressed);
 
   --color-background-default: var(--color-white);
   --color-background-page: #F7F7F7;
@@ -1096,18 +1324,24 @@
   --color-brand-nova-executive: #009BD0;
   --color-brand-nova-executive-accessible: #0077A3;
   --color-brand-nova-executive-hover: #006B8F;
+  --color-brand-nova-executive-hover-light: #20B5E6;
   --color-brand-nova-executive-soft: #E6F6FB;
   --color-brand-nova-executive-border: #B8E5F2;
+  --color-brand-nova-executive-pressed: #005E7D;
 
   /* Functional colors */
   --color-text-link: var(--color-brand-nova-executive-accessible);
   --color-text-link-hover: var(--color-brand-nova-executive-hover);
   --color-success: #16A34A;
+  --color-disabled-background: #EAEAEA;
+  --color-disabled-text: #8A8A8A;
 
   /* Client customization layer */
   --theme-color-primary: var(--color-brand-nova-executive);
   --theme-color-primary-accessible: var(--color-brand-nova-executive-accessible);
   --theme-color-primary-hover: var(--color-brand-nova-executive-hover);
+  --theme-color-primary-hover-light: var(--color-brand-nova-executive-hover-light);
+  --theme-color-primary-pressed: var(--color-brand-nova-executive-pressed);
   --theme-color-primary-soft: var(--color-brand-nova-executive-soft);
   --theme-color-primary-border: var(--color-brand-nova-executive-border);
 
@@ -1119,13 +1353,13 @@
   --font-weight-semibold: 600;
 
   /* Type scale */
-  --font-size-eyebrow: 12px;
-  --font-size-caption: 12px;
-  --font-size-small: 14px;
-  --font-size-body: 16px;
-  --font-size-heading-functional: 28px;
-  --font-size-heading-editorial: 32px;
-  --font-size-title: 42px;
+  --font-size-eyebrow: 0.75rem;
+  --font-size-caption: 0.75rem;
+  --font-size-small: 0.875rem;
+  --font-size-body: 1rem;
+  --font-size-heading-functional: 1.75rem;
+  --font-size-heading-editorial: 2rem;
+  --font-size-title: 2.625rem;
 
   --line-height-tight: 1.12;
   --line-height-heading: 1.25;
@@ -1148,6 +1382,109 @@
   /* Separators */
   --border-hr-color: var(--color-border-default);
   --border-hr-width: 1px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.625rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-default);
+  font-family: var(--font-functional);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--theme-color-primary-accessible);
+  outline-offset: 2px;
+}
+
+.button-primary.button-solid {
+  background: var(--theme-color-primary);
+  border-color: var(--theme-color-primary);
+  color: var(--color-text-on-brand);
+}
+
+.button-primary.button-solid:hover {
+  background: var(--theme-color-primary-hover-light);
+  border-color: var(--theme-color-primary-hover-light);
+  color: var(--color-text-on-brand);
+}
+
+.button-primary.button-solid:active {
+  background: var(--theme-color-primary-pressed);
+  border-color: var(--theme-color-primary-pressed);
+  color: var(--color-text-inverse);
+}
+
+.button-primary.button-outline {
+  background: var(--color-background-default);
+  border-color: var(--theme-color-primary);
+  color: var(--theme-color-primary-accessible);
+}
+
+.button-primary.button-outline:hover {
+  background: var(--theme-color-primary-soft);
+  border-color: var(--theme-color-primary-accessible);
+  color: var(--theme-color-primary-hover);
+}
+
+.button-primary.button-outline:active {
+  background: var(--theme-color-primary-border);
+  border-color: var(--theme-color-primary-hover);
+  color: var(--color-text-primary);
+}
+
+.button-secondary.button-solid {
+  background: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-text-inverse);
+}
+
+.button-secondary.button-solid:hover {
+  background: var(--color-black-hover);
+  border-color: var(--color-black-hover);
+  color: var(--color-text-inverse);
+}
+
+.button-secondary.button-solid:active {
+  background: var(--color-black-pressed);
+  border-color: var(--color-black-pressed);
+  color: var(--color-text-inverse);
+}
+
+.button-secondary.button-outline {
+  background: var(--color-background-default);
+  border-color: var(--color-black);
+  color: var(--color-text-primary);
+}
+
+.button-secondary.button-outline:hover {
+  background: #F1F1F1;
+  border-color: var(--color-black);
+  color: var(--color-text-primary);
+}
+
+.button-secondary.button-outline:active {
+  background: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-text-inverse);
+}
+
+.button:disabled,
+.button.is-disabled {
+  background: var(--color-disabled-background);
+  border-color: var(--color-border-default);
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+  pointer-events: none;
 }</code></pre>
     </section>
   </main>

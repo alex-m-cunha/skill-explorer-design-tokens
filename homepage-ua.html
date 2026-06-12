@@ -342,8 +342,7 @@
       line-height: 1.4;
     }
 
-    .completion-rules,
-    .sitemap {
+    .completion-rules {
       margin-top: 1.5rem;
       padding: 1.5rem;
       border: 0.0625rem solid var(--color-border-subtle);
@@ -351,8 +350,7 @@
       background: #FAFAFA;
     }
 
-    .completion-rules h3,
-    .sitemap h3 {
+    .completion-rules h3 {
       margin: 0 0 1.25rem;
       color: #303336;
       font-size: 1.125rem;
@@ -398,58 +396,6 @@
       color: var(--color-brand-nova-executive-accessible);
       font-size: 0.75rem;
       font-weight: 600;
-    }
-
-    .sitemap-accordion {
-      border-top: 0.0625rem solid var(--color-border-subtle);
-    }
-
-    .sitemap-accordion:first-of-type {
-      border-top: 0;
-    }
-
-    .sitemap-accordion summary {
-      min-height: 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.125rem;
-      cursor: pointer;
-      list-style: none;
-      color: #262A2E;
-      font-size: 0.875rem;
-      font-weight: 600;
-      line-height: 1.35;
-    }
-
-    .sitemap-accordion summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .sitemap-accordion summary::after {
-      content: "";
-      width: 0.5625rem;
-      height: 0.5625rem;
-      border-right: 0.125rem solid currentColor;
-      border-bottom: 0.125rem solid currentColor;
-      transform: rotate(45deg);
-      transition: transform 160ms ease;
-      flex: 0 0 auto;
-      margin-right: 0.25rem;
-      margin-top: -0.25rem;
-    }
-
-    .sitemap-accordion[open] summary::after {
-      transform: rotate(225deg);
-      margin-top: 0.25rem;
-    }
-
-    .sitemap-description {
-      margin: 0 0 1rem;
-      max-width: 33.75rem;
-      color: var(--color-text-muted);
-      font-size: 0.8125rem;
-      line-height: 1.45;
     }
 
     .actions {
@@ -786,8 +732,7 @@
         font-size: 1.5rem;
       }
 
-      .completion-rules,
-      .sitemap {
+      .completion-rules {
         padding: 1.25rem;
       }
 
@@ -882,39 +827,6 @@
             </ul>
           </div>
 
-          <div class="sitemap">
-            <h3>Mapa da Unidade de Aprendizagem</h3>
-            <details class="sitemap-accordion">
-              <summary>Unidade de Aprendizagem / Página Inicial / Visão Geral</summary>
-              <div>
-                <p class="sitemap-description">Resumo da unidade, conteúdos disponíveis, regras de conclusão e próximos passos.</p>
-              </div>
-            </details>
-            <details class="sitemap-accordion">
-              <summary>Conteúdo</summary>
-              <div>
-                <p class="sitemap-description">Acesso às vídeo aulas, leitura e quiz organizados pela sequência da unidade.</p>
-              </div>
-            </details>
-            <details class="sitemap-accordion">
-              <summary>Avisos</summary>
-              <div>
-                <p class="sitemap-description">Comunicações importantes, mensagens de acompanhamento e atualizações do curso.</p>
-              </div>
-            </details>
-            <details class="sitemap-accordion">
-              <summary>Progresso</summary>
-              <div>
-                <p class="sitemap-description">Estado de conclusão das atividades e acompanhamento do percurso na unidade.</p>
-              </div>
-            </details>
-            <details class="sitemap-accordion">
-              <summary>Certificados e Badges</summary>
-              <div>
-                <p class="sitemap-description">Reconhecimentos disponíveis após o cumprimento das condições de conclusão.</p>
-              </div>
-            </details>
-          </div>
         </section>
 
         <section class="card announcements" aria-labelledby="announcements-heading">

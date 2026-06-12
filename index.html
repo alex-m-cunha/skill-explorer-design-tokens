@@ -214,8 +214,30 @@
     .nav {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-2);
+      gap: var(--space-5);
       margin: 0 0 var(--space-7);
+    }
+
+    .nav-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .nav-label {
+      margin: 0;
+      color: var(--color-text-muted);
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: 0.04em;
+      line-height: var(--line-height-caption);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
     }
 
     .nav a {
@@ -766,15 +788,29 @@
     </header>
 
     <nav class="nav" aria-label="Navegação interna">
-      <a href="#principios">Princípios</a>
-      <a href="#cores">Cores</a>
-      <a href="#tipografia">Tipografia</a>
-      <a href="#theme">Client customization</a>
-      <a href="#assets">Assets</a>
-      <a href="#componentes">Elementos base</a>
-      <a href="#botoes">Botões</a>
-      <a href="#templates">Exemplos</a>
-      <a href="#css">CSS</a>
+      <div class="nav-group" aria-labelledby="nav-tokens">
+        <p class="nav-label" id="nav-tokens">Tokens</p>
+        <div class="nav-links">
+          <a href="#principios">Princípios</a>
+          <a href="#cores">Cores</a>
+          <a href="#tipografia">Tipografia</a>
+          <a href="#theme">Client customization</a>
+          <a href="#assets">Assets</a>
+          <a href="#componentes">Elementos base</a>
+          <a href="#botoes">Botões</a>
+          <a href="#css">CSS</a>
+        </div>
+      </div>
+
+      <div class="nav-group" aria-labelledby="nav-page-templates">
+        <p class="nav-label" id="nav-page-templates">Page Templates</p>
+        <div class="nav-links">
+          <a href="homepage-ua.html">Homepage da UA</a>
+          <a href="#templates">Vídeo Intro</a>
+          <a href="#template-video-aula">Vídeo Aula</a>
+          <a href="#template-leitura">Leitura</a>
+        </div>
+      </div>
     </nav>
 
     <section id="principios" class="section">
@@ -1131,6 +1167,19 @@
 
     <section id="templates" class="section">
       <div class="section-header">
+        <h2 class="section-title">Exemplos de páginas UA</h2>
+        <p class="section-description">Composições de referência para aplicar os tokens em páginas Brightspace.</p>
+      </div>
+
+      <article class="card" style="margin-bottom:24px;">
+        <h3 class="card-title">Homepage da Unidade de Aprendizagem</h3>
+        <p class="muted">Exemplo standalone da página inicial da UA, fora do fluxo sequencial das atividades.</p>
+        <p class="body-copy" style="margin-top:12px; margin-bottom:0;">
+          <a href="homepage-ua.html">Ver homepage da UA</a>
+        </p>
+      </article>
+
+      <div class="section-header">
         <h2 class="section-title">Template UA – 01. Vídeo Intro</h2>
         <p class="section-description">Estrutura para primeira atividade da Unidade de Aprendizagem.</p>
       </div>
@@ -1189,7 +1238,7 @@
       </details>
     </section>
 
-    <section class="section">
+    <section id="template-video-aula" class="section">
       <div class="section-header">
         <h2 class="section-title">Template UA – 02. Vídeo Aula</h2>
         <p class="section-description">Estrutura mínima para páginas de vídeo-aula.</p>
@@ -1224,7 +1273,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section id="template-leitura" class="section">
       <div class="section-header">
         <h2 class="section-title">Template UA – 03. Leitura</h2>
         <p class="section-description">Estrutura para páginas de leitura com objetivos no topo.</p>

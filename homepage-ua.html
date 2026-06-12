@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&amp;display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -26,6 +26,7 @@
       --color-brand-nova-executive-soft: #E6F6FB;
       --color-brand-nova-executive-border: #B8E5F2;
       --color-brand-nova-executive-pressed: #005E7D;
+      --color-success: #16A34A;
       --color-disabled-background: #EAEAEA;
       --color-disabled-text: #8A8A8A;
       --color-placeholder-background: #F7F7F7;
@@ -75,8 +76,8 @@
     }
 
     .home-icon {
-      width: 1.125rem;
-      height: 1.125rem;
+      width: 1.25rem;
+      height: 1.25rem;
       background: #4B4F54;
       clip-path: polygon(50% 0, 100% 42%, 84% 42%, 84% 100%, 20% 100%, 20% 42%, 0 42%);
       flex: 0 0 auto;
@@ -259,9 +260,19 @@
 
     .overview-meta {
       display: flex;
+      flex-wrap: wrap;
       align-items: baseline;
       gap: 0.75rem;
       margin-bottom: 1.5rem;
+    }
+
+    .overview-meta::after {
+      content: "";
+      width: 100%;
+      height: 0.0625rem;
+      display: block;
+      margin-top: 0.75rem;
+      background: var(--color-border-subtle);
     }
 
     .overview-meta-separator {
@@ -306,40 +317,60 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
+      align-items: center;
       margin-top: 1.75rem;
     }
 
     .activity-card {
-      min-height: 9.375rem;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: flex-start;
+      align-self: center;
+      height: fit-content;
       padding: 1.125rem;
       border: 0.0625rem solid var(--color-border-subtle);
       border-radius: 0.375rem;
       background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFB 100%);
     }
 
-    .activity-count {
-      margin: 0 0 0.125rem;
-      color: #202326;
-      font-size: 2.125rem;
-      font-weight: 600;
-      line-height: 1;
+    .activity-card-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      width: fit-content;
+    }
+
+    .activity-icon {
+      width: 2rem;
+      height: 2rem;
+      align-self: center;
+      color: var(--color-brand-nova-executive);
+    }
+
+    .activity-icon svg {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
     .activity-label {
-      margin: 0;
-      color: #3C3F42;
-      font-size: 0.9375rem;
+      margin: 0 0 0.25rem;
+      color: var(--color-text-primary);
+      font-size: 1rem;
       font-weight: 600;
+      line-height: 1.25;
     }
 
-    .activity-note {
-      margin: 0.5rem 0 0;
-      color: var(--color-text-muted);
-      font-size: 0.75rem;
-      line-height: 1.4;
+    .activity-content {
+      width: fit-content;
+    }
+
+    .activity-meta {
+      margin: 0;
+      color: var(--color-text-primary);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      line-height: 1.35;
     }
 
     .completion-rules {
@@ -366,6 +397,7 @@
 
     .rules-list li {
       display: flex;
+      align-items: center;
       gap: 0.75rem;
       padding: 1rem 0;
       border-top: 0.0625rem solid var(--color-border-subtle);
@@ -384,18 +416,15 @@
     }
 
     .rules-list li::before {
-      content: "✓";
-      width: 2rem;
-      height: 2rem;
-      display: inline-grid;
-      place-items: center;
+      content: "";
+      width: 1.25rem;
+      height: 1.25rem;
+      display: inline-block;
       flex: 0 0 auto;
-      margin-top: 0.25rem;
-      border-radius: 50%;
-      background: #E6F6FB;
-      color: var(--color-brand-nova-executive-accessible);
-      font-size: 1rem;
-      font-weight: 600;
+      margin-top: 0;
+      background: var(--color-success);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 640'%3E%3Cpath d='M530.8 134.1C545.1 144.5 548.3 164.5 537.9 178.8L281.9 530.8C276.4 538.4 267.9 543.1 258.5 543.9C249.1 544.7 240 541.2 233.4 534.6L105.4 406.6C92.9 394.1 92.9 373.8 105.4 361.3C117.9 348.8 138.2 348.8 150.7 361.3L252.2 462.8L486.2 141.1C496.6 126.8 516.6 123.6 530.9 134z'/%3E%3C/svg%3E") center / contain no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 640'%3E%3Cpath d='M530.8 134.1C545.1 144.5 548.3 164.5 537.9 178.8L281.9 530.8C276.4 538.4 267.9 543.1 258.5 543.9C249.1 544.7 240 541.2 233.4 534.6L105.4 406.6C92.9 394.1 92.9 373.8 105.4 361.3C117.9 348.8 138.2 348.8 150.7 361.3L252.2 462.8L486.2 141.1C496.6 126.8 516.6 123.6 530.9 134z'/%3E%3C/svg%3E") center / contain no-repeat;
     }
 
     .actions {
@@ -569,18 +598,17 @@
     }
 
     .support-icon {
-      width: 2rem;
-      height: 2rem;
-      display: grid;
-      place-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: block;
       flex: 0 0 auto;
-      border-radius: 50%;
-      border: 0.125rem solid var(--color-brand-nova-executive-accessible);
-      background: transparent;
-      color: var(--color-brand-nova-executive-accessible);
-      font-size: 1.25rem;
-      font-weight: 600;
-      line-height: 1;
+      color: var(--color-brand-nova-executive);
+    }
+
+    .support-icon svg {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
     .support-content h2 {
@@ -815,7 +843,7 @@
 
   <nav class="unit-nav" aria-label="Navegação da Unidade de Aprendizagem">
     <div class="unit-nav-inner">
-      <a href="#">Início da Unidade de Aprendizagem</a>
+      <a href="#">Visão Geral</a>
       <a href="#">Conteúdo</a>
       <a href="#">Avisos</a>
       <a href="#">Progresso</a>
@@ -841,28 +869,46 @@
           <p class="overview-lead">Esta página apresenta a estrutura da Unidade de Aprendizagem, as atividades disponíveis e as condições necessárias para a sua conclusão.</p>
 
           <div class="activity-grid" aria-label="Resumo de atividades">
-            <article class="activity-card">
-              <div>
-                <p class="activity-count">3</p>
-                <h3 class="activity-label">Vídeo Aulas</h3>
+            <article class="activity-card" data-activity-count="3" data-activity-singular="atividade" data-activity-plural="atividades">
+              <div class="activity-card-inner">
+                <div class="activity-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    <path fill="currentColor" d="M320 112C434.9 112 528 205.1 528 320C528 434.9 434.9 528 320 528C205.1 528 112 434.9 112 320C112 205.1 205.1 112 320 112zM320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM276.5 211.5C269.1 207 259.8 206.8 252.2 211C244.6 215.2 240 223.3 240 232L240 408C240 416.7 244.7 424.7 252.3 428.9C259.9 433.1 269.1 433 276.6 428.4L420.6 340.4C427.7 336 432.1 328.3 432.1 319.9C432.1 311.5 427.7 303.8 420.6 299.4L276.6 211.4zM362 320L288 365.2L288 274.8L362 320z"/>
+                  </svg>
+                </div>
+                <div class="activity-content">
+                  <h3 class="activity-label">Vídeo Aulas</h3>
+                  <p class="activity-meta"><span class="activity-count">3</span> <span class="activity-unit">atividades</span></p>
+                </div>
               </div>
-              <p class="activity-note">Atividades em formato vídeo para acompanhar os conteúdos da unidade.</p>
             </article>
 
-            <article class="activity-card">
-              <div>
-                <p class="activity-count">1</p>
-                <h3 class="activity-label">Leitura</h3>
+            <article class="activity-card" data-activity-count="1" data-activity-singular="atividade" data-activity-plural="atividades">
+              <div class="activity-card-inner">
+                <div class="activity-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    <path fill="currentColor" d="M232 144C218.7 144 208 154.7 208 168L208 472C208 480.4 206.6 488.5 203.9 496L504 496C517.3 496 528 485.3 528 472L528 168C528 154.7 517.3 144 504 144L232 144zM136 544C96.2 544 64 511.8 64 472L64 176C64 162.7 74.7 152 88 152C101.3 152 112 162.7 112 176L112 472C112 485.3 122.7 496 136 496C149.3 496 160 485.3 160 472L160 168C160 128.2 192.2 96 232 96L504 96C543.8 96 576 128.2 576 168L576 472C576 511.8 543.8 544 504 544L136 544zM256 216C256 202.7 266.7 192 280 192L328 192C341.3 192 352 202.7 352 216L352 264C352 277.3 341.3 288 328 288L280 288C266.7 288 256 277.3 256 264L256 216zM408 240L456 240C469.3 240 480 250.7 480 264C480 277.3 469.3 288 456 288L408 288C394.7 288 384 277.3 384 264C384 250.7 394.7 240 408 240zM280 320L456 320C469.3 320 480 330.7 480 344C480 357.3 469.3 368 456 368L280 368C266.7 368 256 357.3 256 344C256 330.7 266.7 320 280 320zM280 400L456 400C469.3 400 480 410.7 480 424C480 437.3 469.3 448 456 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400z"/>
+                  </svg>
+                </div>
+                <div class="activity-content">
+                  <h3 class="activity-label">Leitura</h3>
+                  <p class="activity-meta"><span class="activity-count">1</span> <span class="activity-unit">atividade</span></p>
+                </div>
               </div>
-              <p class="activity-note">Material textual de apoio à exploração e consolidação dos conteúdos.</p>
             </article>
 
-            <article class="activity-card">
-              <div>
-                <p class="activity-count">1</p>
-                <h3 class="activity-label">Quiz</h3>
+            <article class="activity-card" data-activity-count="1" data-activity-singular="atividade" data-activity-plural="atividades">
+              <div class="activity-card-inner">
+                <div class="activity-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    <path fill="currentColor" d="M197.8 100.3C208.7 107.9 211.3 122.9 203.7 133.7L147.7 213.7C143.6 219.5 137.2 223.2 130.1 223.8C123 224.4 116 222 111 217L71 177C61.7 167.6 61.7 152.4 71 143C80.3 133.6 95.6 133.7 105 143L124.8 162.8L164.4 106.2C172 95.3 187 92.7 197.8 100.3zM197.8 260.3C208.7 267.9 211.3 282.9 203.7 293.7L147.7 373.7C143.6 379.5 137.2 383.2 130.1 383.8C123 384.4 116 382 111 377L71 337C61.6 327.6 61.6 312.4 71 303.1C80.4 293.8 95.6 293.7 104.9 303.1L124.7 322.9L164.3 266.3C171.9 255.4 186.9 252.8 197.7 260.4zM288 160C288 142.3 302.3 128 320 128L544 128C561.7 128 576 142.3 576 160C576 177.7 561.7 192 544 192L320 192C302.3 192 288 177.7 288 160zM288 320C288 302.3 302.3 288 320 288L544 288C561.7 288 576 302.3 576 320C576 337.7 561.7 352 544 352L320 352C302.3 352 288 337.7 288 320zM224 480C224 462.3 238.3 448 256 448L544 448C561.7 448 576 462.3 576 480C576 497.7 561.7 512 544 512L256 512C238.3 512 224 497.7 224 480zM128 440C150.1 440 168 457.9 168 480C168 502.1 150.1 520 128 520C105.9 520 88 502.1 88 480C88 457.9 105.9 440 128 440z"/>
+                  </svg>
+                </div>
+                <div class="activity-content">
+                  <h3 class="activity-label">Quiz</h3>
+                  <p class="activity-meta"><span class="activity-count">1</span> <span class="activity-unit">atividade</span></p>
+                </div>
               </div>
-              <p class="activity-note">Atividade de verificação necessária para concluir a Unidade de Aprendizagem.</p>
             </article>
           </div>
 
@@ -925,7 +971,11 @@
         </aside>
 
         <aside class="card support-widget" aria-labelledby="support-heading">
-          <div class="support-icon" aria-hidden="true">?</div>
+          <div class="support-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+              <path fill="currentColor" d="M528 320C528 205.1 434.9 112 320 112C205.1 112 112 205.1 112 320C112 434.9 205.1 528 320 528C434.9 528 528 434.9 528 320zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 240C302.3 240 288 254.3 288 272C288 285.3 277.3 296 264 296C250.7 296 240 285.3 240 272C240 227.8 275.8 192 320 192C364.2 192 400 227.8 400 272C400 319.2 364 339.2 344 346.5L344 350.3C344 363.6 333.3 374.3 320 374.3C306.7 374.3 296 363.6 296 350.3L296 342.2C296 321.7 310.8 307 326.1 302C332.5 299.9 339.3 296.5 344.3 291.7C348.6 287.5 352 281.7 352 272.1C352 254.4 337.7 240.1 320 240.1zM288 432C288 414.3 302.3 400 320 400C337.7 400 352 414.3 352 432C352 449.7 337.7 464 320 464C302.3 464 288 449.7 288 432z"/>
+            </svg>
+          </div>
           <div class="support-content">
             <h2 id="support-heading">Suporte</h2>
             <p>Se necessitar de apoio, contacte o seu <a href="https://alex-m-cunha.github.io/skill-explorer-design-tokens/homepage-ua.html#">Online Experience Manager</a>.</p>
@@ -939,5 +989,22 @@
       <div class="brightspace">D2L BRIGHTSPACE</div>
     </footer>
   </main>
+  <script>
+    document.querySelectorAll("[data-activity-count]").forEach((activityCard) => {
+      const count = Number(activityCard.dataset.activityCount || 0);
+      const singular = activityCard.dataset.activitySingular || "atividade";
+      const plural = activityCard.dataset.activityPlural || "atividades";
+      const countElement = activityCard.querySelector(".activity-count");
+      const unitElement = activityCard.querySelector(".activity-unit");
+
+      if (countElement) {
+        countElement.textContent = String(count);
+      }
+
+      if (unitElement) {
+        unitElement.textContent = count === 1 ? singular : plural;
+      }
+    });
+  </script>
 </body>
 </html>

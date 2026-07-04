@@ -1,0 +1,1848 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skill Explorer Design Tokens v1.0</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;family=Playfair+Display:wght@600&amp;display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================
+       SKILL EXPLORER DESIGN TOKENS v1.0
+       Base token documentation for Nova SBE Executive Education
+       Brightspace Catalog + LMS implementation
+       ========================================================== */
+
+    :root {
+      /* Core colors */
+      --color-black: #2C2C2C;
+      --color-black-hover: #3A3A3A;
+      --color-black-pressed: #1F1F1F;
+      --color-white: #FFFFFF;
+
+      --color-text-primary: var(--color-black);
+      --color-text-inverse: var(--color-white);
+      --color-text-muted: #6F6F6F;
+      --color-text-on-brand: var(--color-white);
+
+      --color-background-default: var(--color-white);
+      --color-background-page: #F7F7F7;
+      --color-background-dark: var(--color-black);
+      --color-background-soft: #FAFAFA;
+      --color-background-table-header: #F1F2F3;
+
+      --color-border-default: #D9D9D9;
+      --color-border-subtle: #EAEAEA;
+
+      /* Brand colors */
+      --color-brand-nova-executive: #009BD0;
+      --color-brand-nova-executive-accessible: #0077A3;
+      --color-brand-nova-executive-hover: #006B8F;
+      --color-brand-nova-executive-hover-light: #20B5E6;
+      --color-brand-nova-executive-soft: #E6F6FB;
+      --color-brand-nova-executive-border: #B8E5F2;
+      --color-brand-nova-executive-pressed: #005E7D;
+      --color-brand-hover: #008CB9;
+      --color-link-hover: #006A8F;
+
+      /* Functional colors */
+      --color-text-link: var(--color-brand-nova-executive-accessible);
+      --color-text-link-hover: var(--color-brand-nova-executive-hover);
+      --color-success: #16A34A;
+      --color-success-soft: rgba(22, 163, 74, 0.08);
+      --color-warning: #FBBF24;
+      --color-notification: #C2410C;
+      --color-danger: #B42318;
+      --color-danger-hover: #D92D20;
+      --color-danger-pressed: #7A271A;
+      --color-danger-soft: rgba(180, 35, 24, 0.08);
+      --color-overlay-scrim: rgba(44, 44, 44, 0.42);
+      --color-disabled-background: #EAEAEA;
+      --color-disabled-text: #8A8A8A;
+
+      /* Placeholder colors */
+      --color-placeholder-background: #EAEAEA;
+      --color-placeholder-icon: #6F6F6F;
+
+      /* Client customization layer */
+      --theme-color-primary: var(--color-brand-nova-executive);
+      --theme-color-primary-accessible: var(--color-brand-nova-executive-accessible);
+      --theme-color-primary-hover: var(--color-brand-nova-executive-hover);
+      --theme-color-primary-hover-light: var(--color-brand-nova-executive-hover-light);
+      --theme-color-primary-pressed: var(--color-brand-nova-executive-pressed);
+      --theme-color-primary-soft: var(--color-brand-nova-executive-soft);
+      --theme-color-primary-border: var(--color-brand-nova-executive-border);
+      --theme-color-primary-outline-pressed: var(--color-brand-nova-executive-hover);
+
+      /* Typography */
+      --font-editorial: "Playfair Display", Georgia, serif;
+      --font-functional: "Open Sans", Arial, sans-serif;
+
+      --font-weight-regular: 400;
+      --font-weight-semibold: 600;
+      --font-weight-bold: 700;
+      --font-weight-strong: var(--font-weight-bold);
+
+      /* Type scale */
+      --font-size-eyebrow: 0.75rem;
+      --font-size-caption: 0.75rem;
+      --font-size-small: 0.875rem;
+      --font-size-body: 1rem;
+      --font-size-card-title: 1.25rem;
+      --font-size-heading-functional: 1.75rem;
+      --font-size-heading-editorial: 2rem;
+      --font-size-title: 2.625rem;
+      --font-size-page-title: 3.5rem;
+
+      --line-height-tight: 1.12;
+      --line-height-heading: 1.25;
+      --line-height-default: 1.6;
+      --line-height-caption: 1.4;
+      --letter-spacing-ui-label: 0.04em;
+
+      /* Spacing */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+
+      /* Radius */
+      --radius-default: 4px;
+      --radius-table: 8px;
+
+      /* Separators */
+      --border-hr-color: var(--color-border-default);
+      --border-hr-width: 1px;
+
+      /* Operational / prototype component tokens */
+      --font-size-table-value: 0.8125rem;
+      --component-metric-icon-size: 36px;
+      --component-progress-width: 82px;
+      --component-progress-height: 6px;
+      --component-chevron-size: 6px;
+      --component-filter-width-area: 140px;
+      --component-filter-width-validity: 100px;
+      --component-filter-width-date: 76px;
+      --component-filter-width-language: 104px;
+      --component-filter-width-assignment: 120px;
+      --component-org-filter-width-locked: 156px;
+      --component-org-filter-width-global: 184px;
+      --component-user-search-width: 300px;
+      --component-user-filter-width-status: 92px;
+      --component-user-filter-width-department: 136px;
+      --component-user-filter-width-permission: 122px;
+      --component-user-filter-width-license: 104px;
+      --component-request-filter-width-status: 92px;
+      --component-request-filter-width-role: 142px;
+      --component-request-filter-width-area: 140px;
+      --component-request-filter-width-date: 76px;
+      --component-request-filter-width-organization: 154px;
+      --component-sort-width: 132px;
+      --component-select-chevron-inset: 12px;
+      --component-select-padding-y: 6px;
+      --component-select-padding-right: 28px;
+      --component-select-padding-left: 12px;
+      --component-page-size-width: 64px;
+      --component-page-size-padding-left: 10px;
+      --component-pagination-control-size: 32px;
+      --component-pagination-padding-x: 10px;
+      --component-action-button-size: 40px;
+      --component-checkbox-size: 16px;
+      --component-toggle-width: 42px;
+      --component-toggle-height: 24px;
+      --component-toggle-padding: 2px;
+      --component-toggle-knob-size: 18px;
+      --component-modal-width-sm: 420px;
+      --component-modal-width-md: 560px;
+      --opacity-disabled: 0.72;
+      --opacity-muted-icon: 0.72;
+      --opacity-subtle: 0.38;
+      --shadow-subtle: 0 6px 18px rgba(44,44,44,0.06);
+      --shadow-dropdown: 0 8px 24px rgba(44,44,44,0.12);
+      --shadow-toggle-knob: 0 1px 2px rgba(44,44,44,0.18);
+
+      /* System / prototype chrome tokens */
+      --color-system-bg: #F1F2F3;
+      --color-system-border: #D5D9DD;
+      --color-system-border-strong: #C8CED3;
+      --color-system-active-border: #8A949D;
+      --color-system-text: #2F3438;
+      --z-view-bar: 70;
+      --z-topbar: 60;
+      --z-dropdown: 80;
+      --z-popover: 20;
+      --z-popover-backdrop: 19;
+      --z-menu-bridge: 79;
+      --z-modal: 140;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-functional);
+      font-size: var(--font-size-body);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-default);
+      color: var(--color-text-primary);
+      background: var(--color-background-page);
+    }
+
+    a {
+      color: var(--color-text-link);
+      font-weight: var(--font-weight-semibold);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: var(--color-text-link-hover);
+    }
+
+    hr {
+      border: 0;
+      border-top: var(--border-hr-width) solid var(--border-hr-color);
+      margin: var(--space-7) 0 var(--space-5);
+    }
+
+    strong,
+    b {
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.92em;
+      background: #F1F1F1;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    pre {
+      margin: 0;
+      padding: var(--space-5);
+      overflow: auto;
+      background: #202020;
+      color: var(--color-white);
+      border-radius: var(--radius-default);
+      font-size: 0.8125rem;
+      line-height: 1.55;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: var(--space-7) var(--space-5);
+    }
+
+    .hero {
+      background: var(--color-background-dark);
+      color: var(--color-text-inverse);
+      padding: var(--space-8);
+      border-radius: var(--radius-default);
+      margin-bottom: var(--space-7);
+    }
+
+    .hero-eyebrow {
+      margin: 0 0 var(--space-3);
+      font-size: var(--font-size-eyebrow);
+      font-weight: var(--font-weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .hero h1 {
+      margin: 0 0 var(--space-5);
+      max-width: 860px;
+      font-family: var(--font-functional);
+      font-size: var(--font-size-page-title);
+      line-height: 1.04;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-inverse);
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 820px;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      margin: 0 0 var(--space-7);
+    }
+
+    .nav-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      width: 100%;
+    }
+
+    .nav-label {
+      margin: 0;
+      color: var(--color-text-muted);
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: 0.04em;
+      line-height: var(--line-height-caption);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .nav a {
+      display: inline-block;
+      padding: var(--space-2) var(--space-3);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-default);
+      background: var(--color-background-default);
+      color: var(--color-text-primary);
+      text-decoration: none;
+      font-size: var(--font-size-small);
+    }
+
+    .nav a:hover {
+      border-color: var(--theme-color-primary-border);
+      background: var(--theme-color-primary-soft);
+      color: var(--theme-color-primary-accessible);
+    }
+
+    .section {
+      background: var(--color-background-default);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-default);
+      padding: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+
+    .section-header {
+      margin-bottom: var(--space-5);
+    }
+
+    .section-title {
+      margin: 0 0 var(--space-3);
+      font-family: var(--font-functional);
+      font-size: 1.375rem;
+      line-height: var(--line-height-heading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    .section-description {
+      margin: 0;
+      max-width: 820px;
+      color: var(--color-text-muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    .card {
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-default);
+      padding: var(--space-5);
+      background: var(--color-background-default);
+    }
+
+    .card-title {
+      margin: 0 0 var(--space-2);
+      font-size: var(--font-size-card-title);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--line-height-heading);
+    }
+
+    .card p,
+    .card ul {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .card ul {
+      padding-left: 1.2em;
+    }
+
+    .muted {
+      color: var(--color-text-muted);
+    }
+
+    .eyebrow {
+      margin: 0 0 var(--space-2);
+      font-family: var(--font-functional);
+      font-size: var(--font-size-eyebrow);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--line-height-caption);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--color-text-muted);
+    }
+
+    .heading-editorial-title {
+      margin: 0 0 var(--space-4);
+      font-family: var(--font-editorial);
+      font-size: var(--font-size-title);
+      line-height: var(--line-height-tight);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    .heading-editorial {
+      margin: 0 0 var(--space-4);
+      font-family: var(--font-editorial);
+      font-size: var(--font-size-heading-editorial);
+      line-height: var(--line-height-tight);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    .heading-functional {
+      margin: 0 0 var(--space-4);
+      font-family: var(--font-functional);
+      font-size: var(--font-size-heading-functional);
+      line-height: var(--line-height-heading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    .body-copy {
+      margin: 0 0 var(--space-4);
+      font-family: var(--font-functional);
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-default);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-primary);
+    }
+
+    .caption,
+    figcaption {
+      margin: var(--space-3) 0 0;
+      font-family: var(--font-functional);
+      font-size: var(--font-size-caption);
+      line-height: var(--line-height-caption);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-muted);
+    }
+
+    .note {
+      padding: var(--space-4);
+      border-left: 3px solid var(--theme-color-primary);
+      background: var(--theme-color-primary-soft);
+      color: var(--color-text-primary);
+      font-size: var(--font-size-small);
+    }
+
+    .objectives-box {
+      margin: var(--space-5) 0;
+      padding: var(--space-5);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-default);
+      background: var(--color-background-soft);
+    }
+
+    .objectives-box .heading-functional {
+      margin-bottom: var(--space-3);
+      font-size: 1.375rem;
+    }
+
+    .objectives-box ul {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--font-size-small);
+    }
+
+    .token-table th,
+    .token-table td {
+      text-align: left;
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding: var(--space-3);
+      vertical-align: top;
+    }
+
+    .token-table th {
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    .swatch {
+      height: 84px;
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-default);
+      margin-bottom: var(--space-3);
+    }
+
+    .token-name {
+      margin: 0;
+      font-size: var(--font-size-small);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    .token-value {
+      margin: var(--space-1) 0 0;
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+    }
+
+    .placeholder {
+      width: 100%;
+      min-height: 160px;
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-default);
+      background: var(--color-placeholder-background);
+      display: grid;
+      place-items: center;
+      color: var(--color-placeholder-icon);
+      text-align: center;
+      padding: var(--space-5);
+    }
+
+    .placeholder svg {
+      width: 44px;
+      height: 44px;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      fill: none;
+      margin-bottom: var(--space-2);
+    }
+
+    .placeholder-label {
+      margin: 0;
+      font-size: var(--font-size-small);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-placeholder-icon);
+    }
+
+    .mock-banner,
+    .mock-lms-cover {
+      margin-bottom: var(--space-6);
+    }
+
+    .mock-banner .placeholder {
+      min-height: 0;
+      aspect-ratio: 1056 / 250;
+    }
+
+    .mock-lms-cover .placeholder {
+      min-height: 260px;
+      aspect-ratio: 16 / 7;
+    }
+
+    .mock-video {
+      aspect-ratio: 16 / 9;
+      min-height: 260px;
+      margin-bottom: var(--space-6);
+    }
+
+    figure {
+      margin: var(--space-6) 0;
+    }
+
+    .mock-figure {
+      height: 260px;
+    }
+
+    .accordion {
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-default);
+      overflow: hidden;
+      margin-top: var(--space-4);
+    }
+
+    .accordion summary {
+      cursor: pointer;
+      padding: var(--space-4);
+      font-weight: var(--font-weight-semibold);
+      font-family: var(--font-functional);
+      color: var(--color-text-primary);
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion summary::after {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+      transition: transform 160ms ease;
+      flex: 0 0 auto;
+      position: relative;
+      top: -2px;
+      right: var(--space-1);
+    }
+
+    .accordion[open] summary::after {
+      transform: rotate(225deg);
+    }
+
+    .accordion-content {
+      padding: 0 var(--space-4) var(--space-4);
+      color: var(--color-text-primary);
+    }
+
+    .accordion-content .body-copy:last-child {
+      margin-bottom: 0;
+    }
+
+    .bibliography-card {
+      display: block;
+    }
+
+    .bibliography-card .accordion {
+      width: 100%;
+      margin-top: 0;
+    }
+
+    .bibliography-card ul {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .bibliography-card li + li {
+      margin-top: var(--space-2);
+    }
+
+    .reading-layout {
+      width: 100%;
+      max-width: none;
+    }
+
+    .reading-section-heading {
+      font-size: 1.75rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-1) var(--space-3);
+      border-radius: 999px;
+      background: var(--theme-color-primary-soft);
+      color: var(--theme-color-primary-accessible);
+      border: 1px solid var(--theme-color-primary-border);
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .button-demo-grid {
+      display: grid;
+      grid-template-columns: minmax(7rem, 0.8fr) repeat(4, minmax(8rem, 1fr));
+      gap: var(--space-3);
+      align-items: center;
+      overflow-x: auto;
+      padding-bottom: var(--space-2);
+    }
+
+    .button-demo-heading,
+    .button-demo-label {
+      margin: 0;
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .button-demo-label {
+      color: var(--color-text-primary);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.75rem;
+      padding: 0.625rem 1rem;
+      border: 1px solid transparent;
+      border-radius: var(--radius-default);
+      font-family: var(--font-functional);
+      font-size: var(--font-size-small);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.2;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+    }
+
+    .button:focus-visible {
+      outline: 2px solid var(--theme-color-primary-accessible);
+      outline-offset: 2px;
+    }
+
+    .button-primary.button-solid {
+      background: var(--theme-color-primary);
+      border-color: var(--theme-color-primary);
+      color: var(--color-text-on-brand);
+    }
+
+    .button-primary.button-solid:hover,
+    .button-primary.button-solid.is-hover {
+      background: var(--theme-color-primary-hover-light);
+      border-color: var(--theme-color-primary-hover-light);
+      color: var(--color-text-on-brand);
+    }
+
+    .button-primary.button-solid:active,
+    .button-primary.button-solid.is-pressed {
+      background: var(--theme-color-primary-pressed);
+      border-color: var(--theme-color-primary-pressed);
+      color: var(--color-text-inverse);
+    }
+
+    .button-primary.button-outline {
+      background: var(--color-background-default);
+      border-color: var(--theme-color-primary);
+      color: var(--theme-color-primary-accessible);
+    }
+
+    .button-primary.button-outline:hover,
+    .button-primary.button-outline.is-hover {
+      background: var(--theme-color-primary-soft);
+      border-color: var(--theme-color-primary-accessible);
+      color: var(--theme-color-primary-hover);
+    }
+
+    .button-primary.button-outline:active,
+    .button-primary.button-outline.is-pressed {
+      background: var(--theme-color-primary-outline-pressed);
+      border-color: var(--theme-color-primary-outline-pressed);
+      color: var(--color-text-on-brand);
+    }
+
+    .button-secondary.button-solid {
+      background: var(--color-black);
+      border-color: var(--color-black);
+      color: var(--color-text-inverse);
+    }
+
+    .button-secondary.button-solid:hover,
+    .button-secondary.button-solid.is-hover {
+      background: var(--color-black-hover);
+      border-color: var(--color-black-hover);
+      color: var(--color-text-inverse);
+    }
+
+    .button-secondary.button-solid:active,
+    .button-secondary.button-solid.is-pressed {
+      background: var(--color-black-pressed);
+      border-color: var(--color-black-pressed);
+      color: var(--color-text-inverse);
+    }
+
+    .button-secondary.button-outline {
+      background: var(--color-background-default);
+      border-color: var(--color-black);
+      color: var(--color-text-primary);
+    }
+
+    .button-secondary.button-outline:hover,
+    .button-secondary.button-outline.is-hover {
+      background: #F1F1F1;
+      border-color: var(--color-black);
+      color: var(--color-text-primary);
+    }
+
+    .button-secondary.button-outline:active,
+    .button-secondary.button-outline.is-pressed {
+      background: var(--color-black);
+      border-color: var(--color-black);
+      color: var(--color-text-inverse);
+    }
+
+    .button-danger.button-solid {
+      background: var(--color-danger);
+      border-color: var(--color-danger);
+      color: var(--color-text-inverse);
+    }
+
+    .button-danger.button-solid:hover,
+    .button-danger.button-solid.is-hover {
+      background: var(--color-danger-hover);
+      border-color: var(--color-danger-hover);
+      color: var(--color-text-inverse);
+    }
+
+    .button-danger.button-solid:active,
+    .button-danger.button-solid.is-pressed {
+      background: var(--color-danger-pressed);
+      border-color: var(--color-danger-pressed);
+      color: var(--color-text-inverse);
+    }
+
+    .button-danger.button-outline {
+      background: var(--color-background-default);
+      border-color: var(--color-danger);
+      color: var(--color-danger);
+    }
+
+    .button-danger.button-outline:hover,
+    .button-danger.button-outline.is-hover {
+      background: var(--color-danger-soft);
+      border-color: var(--color-danger-hover);
+      color: var(--color-danger-hover);
+    }
+
+    .button-danger.button-outline:active,
+    .button-danger.button-outline.is-pressed {
+      background: var(--color-danger-pressed);
+      border-color: var(--color-danger-pressed);
+      color: var(--color-text-inverse);
+    }
+
+    .button:disabled,
+    .button.is-disabled {
+      background: var(--color-disabled-background);
+      border-color: var(--color-border-default);
+      color: var(--color-disabled-text);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .do-dont {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+    }
+
+    .do {
+      border-left: 3px solid var(--color-success);
+    }
+
+    .dont {
+      border-left: 3px solid #C0193F;
+    }
+
+    @media (max-width: 860px) {
+      .grid,
+      .grid-3,
+      .do-dont {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: var(--space-6);
+      }
+
+      .hero h1 {
+        font-size: 2.375rem;
+      }
+
+      .heading-editorial-title {
+        font-size: 2.125rem;
+      }
+
+      .heading-editorial,
+      .heading-functional {
+        font-size: 1.625rem;
+      }
+
+      .mock-video {
+        min-height: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="hero-eyebrow">Nova SBE Executive Education · Brightspace</p>
+      <h1>Skill Explorer Design Tokens v1.0</h1>
+      <p>Sistema base de design tokens para a implementação da operação das Módulos no Brightspace, incluindo Catálogo e LMS. Este documento é intencionalmente simples: define apenas o essencial para manter consistência visual, acessibilidade e flexibilidade de branding por cliente/cohort.</p>
+    </header>
+
+    <nav class="nav" aria-label="Navegação interna">
+      <div class="nav-group" aria-labelledby="nav-tokens">
+        <p class="nav-label" id="nav-tokens">Tokens</p>
+        <div class="nav-links">
+          <a href="#principios">Princípios</a>
+          <a href="#cores">Cores</a>
+          <a href="#tipografia">Tipografia</a>
+          <a href="#theme">Client customization</a>
+          <a href="#assets">Assets</a>
+          <a href="#componentes">Elementos base</a>
+          <a href="#botoes">Botões</a>
+          <a href="#css">CSS</a>
+        </div>
+      </div>
+
+      <div class="nav-group" aria-labelledby="nav-lms-page-templates">
+        <p class="nav-label" id="nav-lms-page-templates">LMS Page Templates</p>
+        <div class="nav-links">
+          <a href="homepage-ua.html" target="_blank" rel="noopener">Homepage UA A</a>
+          <a href="homepage-ua-b.html" target="_blank" rel="noopener">Homepage UA B</a>
+        </div>
+      </div>
+
+      <div class="nav-group" aria-labelledby="nav-ua-page-templates">
+        <p class="nav-label" id="nav-ua-page-templates">UA Page Templates</p>
+        <div class="nav-links">
+          <a href="#templates">Vídeo Intro</a>
+          <a href="#template-video-aula">Vídeo Aula</a>
+          <a href="#template-leitura">Leitura</a>
+        </div>
+      </div>
+    </nav>
+
+    <section id="principios" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Princípios de implementação</h2>
+        <p class="section-description">As decisões abaixo devem guiar a aplicação dos tokens no Catálogo e no LMS.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3 class="card-title">Minimalismo operacional</h3>
+          <p class="muted">Incluir apenas tokens com uso claro na implementação. Evitar replicar todo o brandbook dentro do LMS.</p>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Acessibilidade primeiro</h3>
+          <p class="muted">A cor oficial da marca pode existir como token, mas texto, links e estados interativos devem usar variantes com contraste adequado.</p>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Branding controlado</h3>
+          <p class="muted">Branding customizado por cliente/cohort muda apenas uma cor primária, um logo e uma imagem de capa. O sistema estrutural mantém-se igual.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="cores" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Cores base</h2>
+        <p class="section-description">Paleta mínima para texto, fundo, separadores, links, estados e marca.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="swatch" style="background:#2C2C2C"></div>
+          <p class="token-name">--color-black / --color-text-primary</p>
+          <p class="token-value">#2C2C2C</p>
+        </div>
+
+        <div class="card">
+          <div class="swatch" style="background:#FFFFFF"></div>
+          <p class="token-name">--color-white / --color-background-default</p>
+          <p class="token-value">#FFFFFF</p>
+        </div>
+
+        <div class="card">
+          <div class="swatch" style="background:#6F6F6F"></div>
+          <p class="token-name">--color-text-muted</p>
+          <p class="token-value">#6F6F6F</p>
+        </div>
+
+        <div class="card">
+          <div class="swatch" style="background:#D9D9D9"></div>
+          <p class="token-name">--color-border-default</p>
+          <p class="token-value">#D9D9D9</p>
+        </div>
+
+        <div class="card">
+          <div class="swatch" style="background:#EAEAEA"></div>
+          <p class="token-name">--color-border-subtle / --color-placeholder-background</p>
+          <p class="token-value">#EAEAEA</p>
+        </div>
+
+        <div class="card">
+          <div class="swatch" style="background:#F1F2F3"></div>
+          <p class="token-name">--color-background-table-header</p>
+          <p class="token-value">#F1F2F3</p>
+        </div>
+
+        <div class="card">
+          <div class="swatch" style="background:#009BD0"></div>
+          <p class="token-name">--color-brand-nova-executive</p>
+          <p class="token-value">#009BD0</p>
+        </div>
+
+        <div class="card">
+          <div class="swatch" style="background:#0077A3"></div>
+          <p class="token-name">--color-brand-nova-executive-accessible / --color-text-link</p>
+          <p class="token-value">#0077A3</p>
+        </div>
+
+        <div class="card">
+          <div class="swatch" style="background:#E6F6FB"></div>
+          <p class="token-name">--color-brand-nova-executive-soft</p>
+          <p class="token-value">#E6F6FB</p>
+        </div>
+
+        <div class="card">
+          <div class="swatch" style="background:#FBBF24"></div>
+          <p class="token-name">--color-warning</p>
+          <p class="token-value">#FBBF24</p>
+        </div>
+
+        <div class="card">
+          <div class="swatch" style="background:#C2410C"></div>
+          <p class="token-name">--color-notification</p>
+          <p class="token-value">#C2410C</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tipografia" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Tipografia</h2>
+        <p class="section-description">Escolher a fonte pelo papel do texto no fluxo, não apenas por ser H1, H2 ou H3.</p>
+      </div>
+
+      <p class="eyebrow">Eyebrow / metadata</p>
+      <h1 class="heading-editorial-title">Economia para Gestores</h1>
+      <p class="caption">Playfair Display Semibold 600 — título editorial / institucional.</p>
+
+      <hr>
+
+      <h2 class="heading-editorial">Crescimento, Globalização e Populismo</h2>
+      <p class="caption">Playfair Display Semibold 600 — heading editorial / narrativo.</p>
+
+      <hr>
+
+      <h2 class="heading-functional">Objetivos de aprendizagem</h2>
+      <p class="caption">Open Sans Semibold 600 — heading funcional / operacional.</p>
+
+      <p class="body-copy">
+        Este é um exemplo de body copy em Open Sans Regular 400. Deve suportar leitura prolongada, instruções e explicações. A <strong>ênfase inline usa Open Sans Semibold 600</strong> para destacar termos-chave sem introduzir peso visual excessivo.
+      </p>
+
+      <p class="body-copy">
+        Exemplo de <a href="#">hiperligação acessível</a> usando a variante escurecida da cor Nova Executive.
+      </p>
+
+      <table class="token-table" style="margin-top:24px;">
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Fonte</th>
+            <th>Peso</th>
+            <th>Uso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Headers editoriais</td>
+            <td>Playfair Display</td>
+            <td>600</td>
+            <td>Títulos de unidade, títulos de aula, headings narrativos em leituras.</td>
+          </tr>
+          <tr>
+            <td>Headers funcionais</td>
+            <td>Open Sans</td>
+            <td>600</td>
+            <td>Objetivos de aprendizagem, bibliografia, instruções, labels, secções operacionais.</td>
+          </tr>
+          <tr>
+            <td>Títulos de cards</td>
+            <td>Open Sans</td>
+            <td>600</td>
+            <td>Títulos em cards, superfícies compactas e módulos de catálogo onde 16px é pequeno e 28px é pesado.</td>
+          </tr>
+          <tr>
+            <td>Body copy</td>
+            <td>Open Sans</td>
+            <td>400</td>
+            <td>Texto principal e leitura prolongada.</td>
+          </tr>
+          <tr>
+            <td>Ênfase inline</td>
+            <td>Open Sans</td>
+            <td>600</td>
+            <td>Bold, termos-chave, destaques curtos.</td>
+          </tr>
+          <tr>
+            <td>Captions / notas</td>
+            <td>Open Sans</td>
+            <td>400</td>
+            <td>Fontes, captions, notas e texto auxiliar.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="theme" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Client customization layer</h2>
+        <p class="section-description">Camada simples para branding por cliente/cohort. Não criar um sistema novo por cliente.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3 class="card-title">O que pode mudar</h3>
+          <ul class="muted">
+            <li>1 cor primária</li>
+            <li>1 logo</li>
+            <li>1 imagem de capa LMS</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">O que não deve mudar</h3>
+          <ul class="muted">
+            <li>hierarquia tipográfica</li>
+            <li>estrutura dos templates</li>
+            <li>tokens base de texto</li>
+            <li>regras de acessibilidade</li>
+            <li>uso de Objetivos de aprendizagem e Bibliografia</li>
+          </ul>
+        </article>
+      </div>
+
+      <pre style="margin-top:24px;"><code>:root {
+  --theme-color-primary: var(--color-brand-nova-executive);
+  --theme-color-primary-accessible: var(--color-brand-nova-executive-accessible);
+  --theme-color-primary-hover: var(--color-brand-nova-executive-hover);
+  --theme-color-primary-hover-light: var(--color-brand-nova-executive-hover-light);
+  --theme-color-primary-pressed: var(--color-brand-nova-executive-pressed);
+  --theme-color-primary-soft: var(--color-brand-nova-executive-soft);
+  --theme-color-primary-border: var(--color-brand-nova-executive-border);
+  --theme-color-primary-outline-pressed: var(--color-brand-nova-executive-hover);
+}</code></pre>
+
+      <p class="caption">Logos e imagens devem ser documentados como assets de implementação, não como tokens centrais, exceto se forem consumidos diretamente por CSS/HTML.</p>
+    </section>
+
+    <section id="assets" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Asset requirements</h2>
+        <p class="section-description">Requisitos mínimos para imagens usadas no Brightspace.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3 class="card-title">LMS Cover Image</h3>
+          <p class="muted">Imagem de capa por cohort / themed participant.</p>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">UA Banner Image</h3>
+          <p class="muted">Imagem de banner por Módulo.</p>
+        </article>
+      </div>
+
+      <article class="card" style="margin-top:24px;">
+        <h3 class="card-title">Especificações comuns</h3>
+        <ul class="muted" style="margin-top:12px;">
+          <li>usar imagem horizontal</li>
+          <li>optimal upload size: 2400 × 960 px</li>
+          <li>minimum / standard size: 1200 × 200 px</li>
+          <li>actual desktop display area: aprox. 1170 × 200 px</li>
+          <li>manter elementos importantes na safe zone central</li>
+          <li>evitar texto embutido</li>
+          <li>evitar logos nas extremidades</li>
+          <li>evitar imagens quadradas ou verticais para banners</li>
+          <li>JPG recomendado por compatibilidade</li>
+          <li>PNG aceitável quando necessário</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="componentes" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Elementos base</h2>
+        <p class="section-description">Exemplos de elementos recorrentes na documentação e nos templates.</p>
+      </div>
+
+      <div class="stack">
+        <div class="card">
+          <p class="eyebrow">Leitura</p>
+          <h3 class="heading-editorial" style="font-size:1.75rem;">Heading editorial</h3>
+          <p class="body-copy">Usado para momentos narrativos e estrutura argumentativa da leitura.</p>
+        </div>
+
+        <div class="card">
+          <h3 class="heading-functional" style="font-size:1.75rem;">Heading funcional</h3>
+          <p class="body-copy">Usado para Objetivos de aprendizagem, Bibliografia, instruções e secções operacionais.</p>
+        </div>
+
+        <div class="card">
+          <div class="objectives-box" style="margin:0;">
+            <h3 class="heading-functional" style="font-size:1.75rem;">Objetivos de aprendizagem</h3>
+            <ul>
+              <li>Identificar os conceitos essenciais da unidade.</li>
+              <li>Relacionar os conteúdos com situações de decisão em contexto executivo.</li>
+              <li>Preparar a aplicação prática dos materiais seguintes.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card bibliography-card">
+          <details class="accordion" open>
+            <summary>Bibliografia</summary>
+            <div class="accordion-content">
+              <ul>
+                <li>Porter, M. E. (1996). What is strategy? <em>Harvard Business Review, 74</em>(6), 61-78.</li>
+                <li>Ghemawat, P. (2007). <em>Redefining Global Strategy</em>. Harvard Business School Press.</li>
+                <li>Rodrik, D. (2011). <em>The Globalization Paradox</em>. W. W. Norton & Company.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="botoes" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Botões</h2>
+        <p class="section-description">Botões primários usam a cor oficial Nova Executive. Botões secundários usam o preto base do sistema.</p>
+      </div>
+
+      <div class="stack">
+        <article class="card">
+          <h3 class="card-title">Primary · solid</h3>
+          <div class="button-demo-grid" aria-label="Estados do botão primary solid">
+            <p class="button-demo-heading">Variante</p>
+            <p class="button-demo-heading">Active</p>
+            <p class="button-demo-heading">Hover</p>
+            <p class="button-demo-heading">Pressed</p>
+            <p class="button-demo-heading">Disabled</p>
+
+            <p class="button-demo-label">Solid</p>
+            <button class="button button-primary button-solid" type="button">Continuar</button>
+            <button class="button button-primary button-solid is-hover" type="button">Continuar</button>
+            <button class="button button-primary button-solid is-pressed" type="button">Continuar</button>
+            <button class="button button-primary button-solid" type="button" disabled>Continuar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Primary · outline</h3>
+          <div class="button-demo-grid" aria-label="Estados do botão primary outline">
+            <p class="button-demo-heading">Variante</p>
+            <p class="button-demo-heading">Active</p>
+            <p class="button-demo-heading">Hover</p>
+            <p class="button-demo-heading">Pressed</p>
+            <p class="button-demo-heading">Disabled</p>
+
+            <p class="button-demo-label">Outline</p>
+            <button class="button button-primary button-outline" type="button">Continuar</button>
+            <button class="button button-primary button-outline is-hover" type="button">Continuar</button>
+            <button class="button button-primary button-outline is-pressed" type="button">Continuar</button>
+            <button class="button button-primary button-outline" type="button" disabled>Continuar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Secondary · solid</h3>
+          <div class="button-demo-grid" aria-label="Estados do botão secondary solid">
+            <p class="button-demo-heading">Variante</p>
+            <p class="button-demo-heading">Active</p>
+            <p class="button-demo-heading">Hover</p>
+            <p class="button-demo-heading">Pressed</p>
+            <p class="button-demo-heading">Disabled</p>
+
+            <p class="button-demo-label">Solid</p>
+            <button class="button button-secondary button-solid" type="button">Cancelar</button>
+            <button class="button button-secondary button-solid is-hover" type="button">Cancelar</button>
+            <button class="button button-secondary button-solid is-pressed" type="button">Cancelar</button>
+            <button class="button button-secondary button-solid" type="button" disabled>Cancelar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Secondary · outline</h3>
+          <div class="button-demo-grid" aria-label="Estados do botão secondary outline">
+            <p class="button-demo-heading">Variante</p>
+            <p class="button-demo-heading">Active</p>
+            <p class="button-demo-heading">Hover</p>
+            <p class="button-demo-heading">Pressed</p>
+            <p class="button-demo-heading">Disabled</p>
+
+            <p class="button-demo-label">Outline</p>
+            <button class="button button-secondary button-outline" type="button">Cancelar</button>
+            <button class="button button-secondary button-outline is-hover" type="button">Cancelar</button>
+            <button class="button button-secondary button-outline is-pressed" type="button">Cancelar</button>
+            <button class="button button-secondary button-outline" type="button" disabled>Cancelar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Danger · solid</h3>
+          <div class="button-demo-grid" aria-label="Estados do botão danger solid">
+            <p class="button-demo-heading">Variante</p>
+            <p class="button-demo-heading">Active</p>
+            <p class="button-demo-heading">Hover</p>
+            <p class="button-demo-heading">Pressed</p>
+            <p class="button-demo-heading">Disabled</p>
+
+            <p class="button-demo-label">Solid</p>
+            <button class="button button-danger button-solid" type="button">Remover</button>
+            <button class="button button-danger button-solid is-hover" type="button">Remover</button>
+            <button class="button button-danger button-solid is-pressed" type="button">Remover</button>
+            <button class="button button-danger button-solid" type="button" disabled>Remover</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Danger · outline</h3>
+          <div class="button-demo-grid" aria-label="Estados do botão danger outline">
+            <p class="button-demo-heading">Variante</p>
+            <p class="button-demo-heading">Active</p>
+            <p class="button-demo-heading">Hover</p>
+            <p class="button-demo-heading">Pressed</p>
+            <p class="button-demo-heading">Disabled</p>
+
+            <p class="button-demo-label">Outline</p>
+            <button class="button button-danger button-outline" type="button">Remover</button>
+            <button class="button button-danger button-outline is-hover" type="button">Remover</button>
+            <button class="button button-danger button-outline is-pressed" type="button">Remover</button>
+            <button class="button button-danger button-outline" type="button" disabled>Remover</button>
+          </div>
+        </article>
+      </div>
+
+      <p class="caption">O estado Active representa o estado base/interativo. Disabled deve remover interação e manter contraste visual baixo sem parecer um link ativo.</p>
+    </section>
+
+    <section id="templates" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Exemplos de páginas UA</h2>
+        <p class="section-description">Composições de referência para aplicar os tokens em páginas Brightspace.</p>
+      </div>
+
+      <article class="card" style="margin-bottom:24px;">
+        <h3 class="card-title">Homepage UA A</h3>
+        <p class="muted">Exemplo standalone da página inicial da UA, com conteúdo principal à esquerda e ações de apoio à direita.</p>
+        <p class="body-copy" style="margin-top:12px; margin-bottom:0;">
+          <a href="homepage-ua.html" target="_blank" rel="noopener">Ver Homepage UA A</a>
+        </p>
+      </article>
+
+      <article class="card" style="margin-bottom:24px;">
+        <h3 class="card-title">Homepage UA B</h3>
+        <p class="muted">Exemplo standalone da página inicial da UA, com ações de apoio à esquerda e conteúdo principal à direita.</p>
+        <p class="body-copy" style="margin-top:12px; margin-bottom:0;">
+          <a href="homepage-ua-b.html" target="_blank" rel="noopener">Ver Homepage UA B</a>
+        </p>
+      </article>
+
+      <div class="section-header">
+        <h2 class="section-title">Template UA – 01. Vídeo Intro</h2>
+        <p class="section-description">Estrutura para primeira atividade da Módulo.</p>
+      </div>
+
+      <div class="mock-banner">
+        <div class="placeholder">
+          <div>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+              <circle cx="9" cy="10" r="2"></circle>
+              <path d="M4 18l5-5 4 4 3-3 4 4"></path>
+            </svg>
+            <p class="placeholder-label">Banner de página da UA · 1056 × 250 px</p>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <h1 class="heading-functional">Apresentação da Módulo</h1>
+
+      <p class="body-copy">
+        Antes de iniciar os conteúdos, veja uma breve apresentação da unidade curricular <strong>Entender o Contexto</strong>.
+      </p>
+
+      <p class="body-copy">
+        Nesta atividade, ficará a conhecer o enquadramento da unidade, os principais objetivos de aprendizagem e os materiais de apoio recomendados.
+      </p>
+
+      <div class="placeholder mock-video">
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M10 9l5 3-5 3V9z"></path>
+          </svg>
+          <p class="placeholder-label">Vídeo de apresentação</p>
+        </div>
+      </div>
+
+      <div class="objectives-box">
+        <h2 class="heading-functional">Objetivos de aprendizagem</h2>
+
+        <ul>
+          <li>Compreender o enquadramento geral da unidade curricular.</li>
+          <li>Identificar os principais temas abordados ao longo da unidade.</li>
+          <li>Preparar-se para explorar os materiais e atividades seguintes.</li>
+        </ul>
+      </div>
+
+      <details class="accordion">
+        <summary>Bibliografia</summary>
+        <div class="accordion-content">
+          <p class="body-copy">Referência bibliográfica 1</p>
+          <p class="body-copy">Referência bibliográfica 2</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="template-video-aula" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Template UA – 02. Vídeo Aula</h2>
+        <p class="section-description">Estrutura mínima para páginas de vídeo-aula.</p>
+      </div>
+
+      <div class="mock-banner">
+        <div class="placeholder">
+          <div>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+              <circle cx="9" cy="10" r="2"></circle>
+              <path d="M4 18l5-5 4 4 3-3 4 4"></path>
+            </svg>
+            <p class="placeholder-label">Banner de página da UA · 1056 × 250 px</p>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <p class="eyebrow">Vídeo Aula</p>
+      <h1 class="heading-editorial">Crescimento, Globalização e Populismo</h1>
+
+      <div class="placeholder mock-video">
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M10 9l5 3-5 3V9z"></path>
+          </svg>
+          <p class="placeholder-label">Vídeo aula</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="template-leitura" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Template UA – 03. Leitura</h2>
+        <p class="section-description">Estrutura para páginas de leitura com objetivos no topo.</p>
+      </div>
+
+      <article class="reading-layout">
+        <div class="mock-banner">
+          <div class="placeholder">
+            <div>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                <circle cx="9" cy="10" r="2"></circle>
+                <path d="M4 18l5-5 4 4 3-3 4 4"></path>
+              </svg>
+              <p class="placeholder-label">Banner de página da UA · 1056 × 250 px</p>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <p class="eyebrow">Leitura</p>
+        <h1 class="heading-editorial">Crescimento, Globalização e Populismo</h1>
+
+        <div class="objectives-box">
+          <h2 class="heading-functional">Objetivos de aprendizagem</h2>
+          <ul>
+            <li>Relacionar crescimento económico e globalização.</li>
+            <li>Interpretar indicadores económicos no contexto da unidade.</li>
+            <li>Compreender tensões sociais associadas ao populismo.</li>
+          </ul>
+        </div>
+
+        <h2 class="heading-editorial reading-section-heading">Crescimento, globalização e desigualdade</h2>
+
+        <p class="body-copy">
+          Durante várias décadas, a integração económica global contribuiu para mudanças profundas na distribuição da riqueza, na organização produtiva e na forma como diferentes sociedades interpretam crescimento e prosperidade.
+        </p>
+
+        <figure>
+          <div class="placeholder mock-figure">
+            <div>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 19V5"></path>
+                <path d="M4 19h16"></path>
+                <path d="M7 15l3-4 3 2 4-6"></path>
+              </svg>
+              <p class="placeholder-label">Placeholder de gráfico</p>
+            </div>
+          </div>
+          <figcaption>Figura 1. Exemplo de gráfico integrado no fluxo da leitura.</figcaption>
+        </figure>
+
+        <h3 class="heading-editorial" style="font-size:1.625rem">O papel dos indicadores macroeconómicos</h3>
+
+        <p class="body-copy">
+          A organização hierárquica deve ser semanticamente correta: H2 para secções principais, H3 para subsecções e H4 apenas quando existir um nível adicional real.
+        </p>
+
+        <details class="accordion">
+          <summary>Bibliografia</summary>
+          <div class="accordion-content">
+            <p class="body-copy">Referência bibliográfica 1</p>
+            <p class="body-copy">Referência bibliográfica 2</p>
+          </div>
+        </details>
+      </article>
+    </section>
+
+    <section id="css" class="section">
+      <div class="section-header">
+        <h2 class="section-title">CSS tokens</h2>
+        <p class="section-description">Bloco base para copiar para implementação ou documentação técnica.</p>
+      </div>
+
+      <pre><code>:root {
+  /* Core colors */
+  --color-black: #2C2C2C;
+  --color-black-hover: #3A3A3A;
+  --color-black-pressed: #1F1F1F;
+  --color-white: #FFFFFF;
+
+  --color-text-primary: var(--color-black);
+  --color-text-inverse: var(--color-white);
+  --color-text-muted: #6F6F6F;
+  --color-text-on-brand: var(--color-white);
+
+  --color-background-default: var(--color-white);
+  --color-background-page: #F7F7F7;
+  --color-background-dark: var(--color-black);
+  --color-background-soft: #FAFAFA;
+  --color-background-table-header: #F1F2F3;
+
+  --color-border-default: #D9D9D9;
+  --color-border-subtle: #EAEAEA;
+
+  /* Brand colors */
+  --color-brand-nova-executive: #009BD0;
+  --color-brand-nova-executive-accessible: #0077A3;
+  --color-brand-nova-executive-hover: #006B8F;
+  --color-brand-nova-executive-hover-light: #20B5E6;
+  --color-brand-nova-executive-soft: #E6F6FB;
+  --color-brand-nova-executive-border: #B8E5F2;
+  --color-brand-nova-executive-pressed: #005E7D;
+  --color-brand-hover: #008CB9;
+  --color-link-hover: #006A8F;
+
+  /* Functional colors */
+  --color-text-link: var(--color-brand-nova-executive-accessible);
+  --color-text-link-hover: var(--color-brand-nova-executive-hover);
+  --color-success: #16A34A;
+  --color-success-soft: rgba(22, 163, 74, 0.08);
+  --color-warning: #FBBF24;
+  --color-notification: #C2410C;
+  --color-danger: #B42318;
+  --color-danger-hover: #D92D20;
+  --color-danger-pressed: #7A271A;
+  --color-danger-soft: rgba(180, 35, 24, 0.08);
+  --color-overlay-scrim: rgba(44, 44, 44, 0.42);
+  --color-disabled-background: #EAEAEA;
+  --color-disabled-text: #8A8A8A;
+
+  /* Client customization layer */
+  --theme-color-primary: var(--color-brand-nova-executive);
+  --theme-color-primary-accessible: var(--color-brand-nova-executive-accessible);
+  --theme-color-primary-hover: var(--color-brand-nova-executive-hover);
+  --theme-color-primary-hover-light: var(--color-brand-nova-executive-hover-light);
+  --theme-color-primary-pressed: var(--color-brand-nova-executive-pressed);
+  --theme-color-primary-soft: var(--color-brand-nova-executive-soft);
+  --theme-color-primary-border: var(--color-brand-nova-executive-border);
+  --theme-color-primary-outline-pressed: var(--color-brand-nova-executive-hover);
+
+  /* Typography */
+  --font-editorial: "Playfair Display", Georgia, serif;
+  --font-functional: "Open Sans", Arial, sans-serif;
+
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-strong: var(--font-weight-bold);
+
+  /* Type scale */
+  --font-size-eyebrow: 0.75rem;
+  --font-size-caption: 0.75rem;
+  --font-size-small: 0.875rem;
+  --font-size-body: 1rem;
+  --font-size-card-title: 1.25rem;
+  --font-size-heading-functional: 1.75rem;
+  --font-size-heading-editorial: 2rem;
+  --font-size-title: 2.625rem;
+
+  --line-height-tight: 1.12;
+  --line-height-heading: 1.25;
+  --line-height-default: 1.6;
+  --line-height-caption: 1.4;
+  --letter-spacing-ui-label: 0.04em;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Radius */
+  --radius-default: 4px;
+  --radius-table: 8px;
+
+  /* Separators */
+  --border-hr-color: var(--color-border-default);
+  --border-hr-width: 1px;
+
+  /* Operational / prototype component tokens */
+  --font-size-table-value: 0.8125rem;
+  --component-metric-icon-size: 36px;
+  --component-progress-width: 82px;
+  --component-progress-height: 6px;
+  --component-chevron-size: 6px;
+  --component-filter-width-area: 140px;
+  --component-filter-width-validity: 100px;
+  --component-filter-width-date: 76px;
+  --component-filter-width-language: 104px;
+  --component-filter-width-assignment: 120px;
+  --component-org-filter-width-locked: 156px;
+  --component-org-filter-width-global: 184px;
+  --component-user-search-width: 300px;
+  --component-user-filter-width-status: 92px;
+  --component-user-filter-width-department: 136px;
+  --component-user-filter-width-permission: 122px;
+  --component-user-filter-width-license: 104px;
+  --component-request-filter-width-status: 92px;
+  --component-request-filter-width-role: 142px;
+  --component-request-filter-width-area: 140px;
+  --component-request-filter-width-date: 76px;
+  --component-request-filter-width-organization: 154px;
+  --component-sort-width: 132px;
+  --component-select-chevron-inset: 12px;
+  --component-select-padding-y: 6px;
+  --component-select-padding-right: 28px;
+  --component-select-padding-left: 12px;
+  --component-page-size-width: 64px;
+  --component-page-size-padding-left: 10px;
+  --component-pagination-control-size: 32px;
+  --component-pagination-padding-x: 10px;
+  --component-action-button-size: 40px;
+  --component-checkbox-size: 16px;
+  --component-toggle-width: 42px;
+  --component-toggle-height: 24px;
+  --component-toggle-padding: 2px;
+  --component-toggle-knob-size: 18px;
+  --component-modal-width-sm: 420px;
+  --component-modal-width-md: 560px;
+  --opacity-disabled: 0.72;
+  --opacity-muted-icon: 0.72;
+  --opacity-subtle: 0.38;
+  --shadow-subtle: 0 6px 18px rgba(44,44,44,0.06);
+  --shadow-dropdown: 0 8px 24px rgba(44,44,44,0.12);
+  --shadow-toggle-knob: 0 1px 2px rgba(44,44,44,0.18);
+
+  /* System / prototype chrome tokens */
+  --color-system-bg: #F1F2F3;
+  --color-system-border: #D5D9DD;
+  --color-system-border-strong: #C8CED3;
+  --color-system-active-border: #8A949D;
+  --color-system-text: #2F3438;
+  --z-view-bar: 70;
+  --z-topbar: 60;
+  --z-dropdown: 80;
+  --z-popover: 20;
+  --z-popover-backdrop: 19;
+  --z-menu-bridge: 79;
+  --z-modal: 140;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.625rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-default);
+  font-family: var(--font-functional);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--theme-color-primary-accessible);
+  outline-offset: 2px;
+}
+
+.button-primary.button-solid {
+  background: var(--theme-color-primary);
+  border-color: var(--theme-color-primary);
+  color: var(--color-text-on-brand);
+}
+
+.button-primary.button-solid:hover {
+  background: var(--theme-color-primary-hover-light);
+  border-color: var(--theme-color-primary-hover-light);
+  color: var(--color-text-on-brand);
+}
+
+.button-primary.button-solid:active {
+  background: var(--theme-color-primary-pressed);
+  border-color: var(--theme-color-primary-pressed);
+  color: var(--color-text-inverse);
+}
+
+.button-primary.button-outline {
+  background: var(--color-background-default);
+  border-color: var(--theme-color-primary);
+  color: var(--theme-color-primary-accessible);
+}
+
+.button-primary.button-outline:hover {
+  background: var(--theme-color-primary-soft);
+  border-color: var(--theme-color-primary-accessible);
+  color: var(--theme-color-primary-hover);
+}
+
+.button-primary.button-outline:active {
+  background: var(--theme-color-primary-outline-pressed);
+  border-color: var(--theme-color-primary-outline-pressed);
+  color: var(--color-text-on-brand);
+}
+
+.button-secondary.button-solid {
+  background: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-text-inverse);
+}
+
+.button-secondary.button-solid:hover {
+  background: var(--color-black-hover);
+  border-color: var(--color-black-hover);
+  color: var(--color-text-inverse);
+}
+
+.button-secondary.button-solid:active {
+  background: var(--color-black-pressed);
+  border-color: var(--color-black-pressed);
+  color: var(--color-text-inverse);
+}
+
+.button-secondary.button-outline {
+  background: var(--color-background-default);
+  border-color: var(--color-black);
+  color: var(--color-text-primary);
+}
+
+.button-secondary.button-outline:hover {
+  background: #F1F1F1;
+  border-color: var(--color-black);
+  color: var(--color-text-primary);
+}
+
+.button-secondary.button-outline:active {
+  background: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-text-inverse);
+}
+
+.button-danger.button-solid {
+  background: var(--color-danger);
+  border-color: var(--color-danger);
+  color: var(--color-text-inverse);
+}
+
+.button-danger.button-solid:hover {
+  background: var(--color-danger-hover);
+  border-color: var(--color-danger-hover);
+  color: var(--color-text-inverse);
+}
+
+.button-danger.button-solid:active {
+  background: var(--color-danger-pressed);
+  border-color: var(--color-danger-pressed);
+  color: var(--color-text-inverse);
+}
+
+.button-danger.button-outline {
+  background: var(--color-background-default);
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.button-danger.button-outline:hover {
+  background: var(--color-danger-soft);
+  border-color: var(--color-danger-hover);
+  color: var(--color-danger-hover);
+}
+
+.button-danger.button-outline:active {
+  background: var(--color-danger-pressed);
+  border-color: var(--color-danger-pressed);
+  color: var(--color-text-inverse);
+}
+
+.button:disabled,
+.button.is-disabled {
+  background: var(--color-disabled-background);
+  border-color: var(--color-border-default);
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+  pointer-events: none;
+}</code></pre>
+    </section>
+  </main>
+</body>
+</html>

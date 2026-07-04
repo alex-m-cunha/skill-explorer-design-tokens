@@ -1,0 +1,15 @@
+.DS_Store
+Thumbs.db
+
+# Local review captures
+screenshots/
+Screenshot*
+
+# Local environment files
+.env
+.env.*
+
+# Temporary exports
+*.zip
+*.tmp
+
